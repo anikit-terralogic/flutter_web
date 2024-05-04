@@ -73,7 +73,7 @@ abstract class BasePageStateDelegate<T extends StatefulWidget,
                           filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
                           child: TouchEffect(
                             child: Container(
-                             /// color: ThemeColorName.customButtonColor.withOpacity(0.9),
+                              color: ThemeColorName.customButtonColor.withOpacity(0.9),
                               child: Dialog(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(24)),

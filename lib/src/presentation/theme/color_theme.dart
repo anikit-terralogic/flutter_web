@@ -5,22 +5,17 @@ import 'package:flutter/scheduler.dart';
 import '../../../gen/colors.gen.dart';
 import '../../../main.dart';
 
+
+
 class ThemeColorName {
-  static Color getColor(
-      {required Color lightColor,
-      required Color darkColor,
-      required Color contrastColor}) {
+  static Color getColor({required Color lightColor, required Color darkColor, required Color contrastColor}) {
     switch (themeManager.currentTheme) {
       case AppearanceMode.light:
         return lightColor;
       case AppearanceMode.dark:
         return darkColor;
       case AppearanceMode.system:
-        return SchedulerBinding
-                    .instance.platformDispatcher.platformBrightness ==
-                Brightness.dark
-            ? darkColor
-            : lightColor;
+        return SchedulerBinding.instance.platformDispatcher.platformBrightness == Brightness.dark ? darkColor : lightColor;
       case AppearanceMode.contrast:
         return contrastColor;
       default:
@@ -28,58 +23,63 @@ class ThemeColorName {
     }
   }
 
-  static Color get nameColor => getColor(
-      lightColor: ColorName.nameColor,
-      darkColor: ColorName.nameColor,
-      contrastColor: ColorName.nameColor);
-
-  static Color get headline => getColor(
-      lightColor: ColorName.headline,
-      darkColor: ColorName.headline,
-      contrastColor: ColorName.headline);
-
-  static Color get whiteColors => getColor(
-      lightColor: ColorName.whiteColor,
-      darkColor: ColorName.whiteColor,
-      contrastColor: ColorName.whiteColor);
-
-  static Color get skillcolor => getColor(
-      lightColor: ColorName.skillcolor,
-      darkColor: ColorName.skillcolor,
-      contrastColor: ColorName.skillcolor);
-
-  static Color get greycolor => getColor(
-      lightColor: ColorName.greycolor,
-      darkColor: ColorName.greycolor,
-      contrastColor: ColorName.greycolor);
-
-  static Color get mileStoneColor => getColor(
-      lightColor: ColorName.mileStoneColor,
-      darkColor: ColorName.mileStoneColor,
-      contrastColor: ColorName.mileStoneColor);
-
-  static Color get testimonialColor => getColor(
-      lightColor: ColorName.testimonialColor,
-      darkColor: ColorName.testimonialColor,
-      contrastColor: ColorName.testimonialColor);
-
-  static Color get technology => getColor(
-      lightColor: ColorName.technology,
-      darkColor: ColorName.technology,
-      contrastColor: ColorName.technology);
-
-  static Color get borderColor => getColor(
+  static Color get customButtonColor => getColor(
       lightColor: ColorName.borderColor,
       darkColor: ColorName.borderColor,
       contrastColor: ColorName.borderColor);
 
-  static Color get submit => getColor(
-      lightColor: ColorName.submit,
-      darkColor: ColorName.submit,
-      contrastColor: ColorName.submit);
+  // static Color get textFieldText => getColor(
+  //     lightColor: ColorName.color0C1121,
+  //     darkColor: ColorName.colorCAD7FF,
+  //     contrastColor: ColorName.colorDEDB21);
 
-  static Color get followUsColor => getColor(
-      lightColor: ColorName.followUsColor,
-      darkColor: ColorName.followUsColor,
-      contrastColor: ColorName.followUsColor);
+  // static Color get textFieldNoFocus => getColor(
+  //     lightColor: ColorName.color5A6482,
+  //     darkColor: ColorName.colorCAD7FF,
+  //     contrastColor: ColorName.colorDEDB21);
+
+  // static Color get textFieldHint => getColor(
+  //     lightColor: ColorName.color5A6482,
+  //     darkColor: ColorName.color5A6482,
+  //     contrastColor: ColorName.color838110);
+
+
+  // static Color get errorText => getColor(
+  //     lightColor: ColorName.colorCC0A0A,
+  //     darkColor: ColorName.colorF17176,
+  //     contrastColor: ColorName.colorDEDB21);
+
+  // static Color get textFieldFocus => getColor(
+  //     lightColor: ColorName.color0C1121,
+  //     darkColor: ColorName.color5A6482,
+  //     contrastColor: ColorName.colorDEDB21);
+
+
+  // static Color get textFieldDisable => getColor(
+  //     lightColor: ColorName.colorDDDDDD,
+  //     darkColor: ColorName.color787878,
+  //     contrastColor: ColorName.color838110);
+
+
+  // static Color get textFieldEnable => getColor(
+  //     lightColor: ColorName.color959FBE,
+  //     darkColor: ColorName.color5A6482,
+  //     contrastColor: ColorName.colorDEDB21);
+
+
+  // static Color get background => getColor(
+  //     lightColor: ColorName.backgroundColor,
+  //     darkColor: ColorName.color13192A,
+  //     contrastColor: ColorName.black);
+
+  // static Color get cursor => getColor(
+  //     lightColor: ColorName.colorA3ADCD,
+  //     darkColor: ColorName.colorA3ADCD,
+  //     contrastColor: ColorName.color838110);
+
+
+  // static Color get dialogText => getColor(
+  //     lightColor: ColorName.color202946,
+  //     darkColor: ColorName.colorCAD7FF,
+  //     contrastColor: ColorName.colorDEDB21);
 }
