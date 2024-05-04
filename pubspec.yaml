@@ -1,0 +1,103 @@
+name: sample_flutter_web
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.0 <3.0.0'
+
+dependencies:
+  auto_route: ^5.0.4
+  cached_network_image: ^3.2.3
+  connectivity_plus: ^5.0.1
+  cupertino_icons: ^1.0.2
+  data:
+    path: ./module/data
+  domain:
+    path: ./module/domain
+  enum_to_string: ^2.0.1
+  equatable: ^2.0.5
+  flutter:
+    sdk: flutter
+  flutter_bloc: 8.0.1
+  flutter_hooks: ^0.18.1
+  flutter_localizations:
+    sdk: flutter
+  flutter_svg: 2.0.3
+  freezed: ^2.1.1
+  freezed_annotation: ^2.0.3
+  get_it: ^7.6.0
+  hive: ^2.2.0
+  hive_flutter: ^1.1.0
+  hooked_bloc: ^1.4.1
+  injectable: ^2.1.1
+  intl: ^0.18.0
+  json_annotation: ^4.8.0
+  remote:
+    path: ./module/remote
+  rxdart: ^0.27.2
+  shared:
+    path: ./module/shared
+  smooth_page_indicator: ^1.1.0
+
+dev_dependencies:
+
+  # auto route
+  auto_route_generator: ^5.0.3
+
+  bloc_test: 9.0.3
+
+  # Auto generate some files
+  build_runner: ^2.3.3
+
+  flutter_gen_runner: ^5.2.0
+
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+  injectable_generator: ^2.1.5
+  json_serializable: ^6.7.0
+  date_picker_timeline: ^1.2.5
+  flutter_calendar_carousel: ^2.4.2
+# Config generate when build
+flutter_gen:
+  output: lib/gen/
+  line_length: 160
+  null_safety: true
+
+  integrations:
+    flutter_svg: true
+    flare_flutter: true
+    lottie: true
+  assets:
+    enabled: true
+
+  fonts:
+    enabled: true
+
+  colors:
+    enabled: true
+    inputs:
+      - assets/color/colors.xml
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Work Sans
+      fonts:
+        - asset: assets/fonts/WorkSans-Regular.ttf
+        - asset: assets/fonts/WorkSans-Bold.ttf
+        - asset: assets/fonts/WorkSans-Italic.ttf
+
+
+flutter_intl:
+  enabled: true
+  class_name: LanguageTranslation
+  main_locale: en

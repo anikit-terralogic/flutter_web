@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nameColor">#FF0077FF</color>
+    <color name="headline">#222222</color>
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="skillcolor">#EEEEEE</color>
+    <color name="greycolor">#E9FFFF</color>
+    <color name="mileStoneColor">#333333</color>
+    <color name="testimonialColor">#666666</color>
+    <color name="technology">#F8F8F8</color>
+    <color name="borderColor">#F2F2F2</color>
+    <color name="submit">#00489A</color>
+    <color name="followUsColor">#79B2F2</color>
+</resources>
