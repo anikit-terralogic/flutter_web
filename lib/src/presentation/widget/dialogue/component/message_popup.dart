@@ -30,7 +30,7 @@ class MessagePopup extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .displaySmall
-                  ?.copyWith(color: ThemeColorName.customButtonColor),
+                  ?.copyWith(color: ThemeColorName.nameColor),
             ),
             const SizedBox(
               height: 12.0,
@@ -41,7 +41,7 @@ class MessagePopup extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium
-                  ?.copyWith(color: ThemeColorName.customButtonColor),
+                  ?.copyWith(color: ThemeColorName.nameColor),
             ),
           ],
         ),

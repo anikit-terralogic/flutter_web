@@ -22,7 +22,7 @@ class NoInternet extends StatelessWidget {
             Text(
               LanguageTranslation.current.no_internet,
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    color: ThemeColorName.customButtonColor,
+                    color: ThemeColorName.nameColor,
                     fontWeight: FontWeight.w600,
                   //  fontFamily: FontFamily.lato,
                     fontSize: 20,
@@ -35,7 +35,7 @@ class NoInternet extends StatelessWidget {
               LanguageTranslation.current.no_internet_subtext,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: ThemeColorName.customButtonColor,
+                    color: ThemeColorName.nameColor,
                     fontWeight: FontWeight.w400,
                   //  fontFamily: FontFamily.lato,
                     fontSize: 14,
