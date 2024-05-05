@@ -50,33 +50,30 @@ class _ProjectsState extends State<Projects>
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // Our Milestones
-                  Text("Our projects",
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      style: 
-                       Theme.of(context)
-                    .textTheme
-                    .displayMedium
-                    ?.copyWith(color: ThemeColorName.nameColor),
-
-                     ),
+                  Text(
+                    "Our projects",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: ThemeColorName.nameColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600),
+                  ),
                   Container(
                     margin: const EdgeInsets.only(bottom: 50),
                     width: 684,
                     child: Text(
-                        "Presenting My Design Portfolio and Case Studies",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.center,
-                        style: 
-                         Theme.of(context)
-                    .textTheme
-                    .displayLarge
-                    ?.copyWith(color: ThemeColorName.headline),
-
-                     
-                  ), ),
+                      "Presenting My Design Portfolio and Case Studies",
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: ThemeColorName.headline,
+                          fontSize: 50,
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ),
                   TabBar(
                       indicator: BoxDecoration(
                         color:
@@ -86,20 +83,15 @@ class _ProjectsState extends State<Projects>
                       ),
                       controller: _tabController,
                       isScrollable: true,
-                      labelStyle: 
-                       Theme.of(context)
-                    .textTheme
-                    .displayMedium
-                    ?.copyWith(color: ThemeColorName.whiteColors),
-
-                      unselectedLabelStyle: 
-                      
-                       Theme.of(context)
-                    .textTheme
-                    .displayMedium
-                    ?.copyWith(color: ThemeColorName.nameColor),
-
-                     labelColor: ThemeColorName.whiteColors,
+                      labelStyle: Theme.of(context)
+                          .textTheme
+                          .displayMedium
+                          ?.copyWith(color: ThemeColorName.whiteColors),
+                      unselectedLabelStyle: Theme.of(context)
+                          .textTheme
+                          .displayMedium
+                          ?.copyWith(color: ThemeColorName.nameColor),
+                      labelColor: ThemeColorName.whiteColors,
                       unselectedLabelColor: ThemeColorName.nameColor,
                       indicatorSize: TabBarIndicatorSize.tab,
                       onTap: (index) {

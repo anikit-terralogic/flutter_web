@@ -57,7 +57,10 @@ class _PortfolioHomepageState extends State<Homepage> {
           margin: const EdgeInsets.only(bottom: 10.0, top: 15.0),
           child: Text(
             "Welcome to my Portfolio",
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(),
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                color: ThemeColorName.headline,
+                fontSize: 20,
+                fontWeight: FontWeight.w600),
           ),
         ),
         RichText(
@@ -69,17 +72,28 @@ class _PortfolioHomepageState extends State<Homepage> {
             ),
             children: <TextSpan>[
               TextSpan(
-                text: 'Hi I’m \n',
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(),
-              ),
+                  text: 'Hi I’m \n',
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        color: ThemeColorName.headline,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 50.0,
+                      )),
               TextSpan(
                   text: 'Robert Junior\n',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        color: ThemeColorName.nameColor,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 50.0,
+                      )),
 
               // Product Designer
               TextSpan(
                   text: 'Product Designer',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith()),
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        color: ThemeColorName.headline,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 50.0,
+                      )),
             ],
           ),
         ),
@@ -88,7 +102,11 @@ class _PortfolioHomepageState extends State<Homepage> {
           margin: const EdgeInsets.only(top: 10.0),
           child: Text(
             "Collaborating with highly skilled individuals, our agency delivers top-quality services.",
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(),
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  color: ThemeColorName.headline,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20.0,
+                ),
             textAlign: TextAlign.center,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
@@ -127,87 +145,113 @@ class _PortfolioHomepageState extends State<Homepage> {
       margin: const EdgeInsets.symmetric(horizontal: 83, vertical: 83),
       child: Row(
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(bottom: 10.0),
-                child: Text("Welcome to my Portfolio",
-                    style:
-                        Theme.of(context).textTheme.headlineMedium?.copyWith()),
-              ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
+          Container(
+            margin: const EdgeInsets.only(top: 78),
+            constraints: const BoxConstraints(maxWidth: 624),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(bottom: 10.0),
+                  child: Text(
+                    "Welcome to my Portfolio",
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        color: ThemeColorName.headline,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w600),
                   ),
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Hi I’m \n',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineLarge
-                            ?.copyWith()),
-                    TextSpan(
-                        text: 'Robert Junior\n',
-                        style:
-                            Theme.of(context).textTheme.labelLarge?.copyWith()),
+                ),
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'Hi I’m \n',
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium
+                              ?.copyWith(
+                                color: ThemeColorName.headline,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 60.0,
+                              )),
+                      TextSpan(
+                          text: 'Robert Junior\n',
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge
+                              ?.copyWith(
+                                color: ThemeColorName.nameColor,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 70.0,
+                              )),
 
-                    // Product Designer
-                    TextSpan(
-                        text: 'Product Designer',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineLarge
-                            ?.copyWith()),
-                  ],
+                      // Product Designer
+                      TextSpan(
+                          text: 'Product Designer',
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium
+                              ?.copyWith(
+                                color: ThemeColorName.headline,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 60.0,
+                              )),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                constraints: const BoxConstraints(maxWidth: 624),
-                margin: const EdgeInsets.only(top: 10.0),
-                child: Text(
-                  "Collaborating with highly skilled individuals, our agency delivers top-quality services.",
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+                Container(
+                  margin: const EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    "Collaborating with highly skilled individuals, our agency delivers top-quality services.",
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w400,
+                        color: ThemeColorName.headline),
+                    maxLines: 3,
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 50.0),
-                child: Row(
-                  children: [
-                    AppWidgets().buttonWidget(
-                      context,
-                      ThemeColorName.nameColor,
-                      "Hire Me!",
-                      ThemeColorName.whiteColors,
-                    ),
-                    const SizedBox(
-                      width: 45.0,
-                    ),
-                    downloadCvWidget(context)
-                  ],
+                Container(
+                  margin: const EdgeInsets.only(top: 50.0),
+                  child: Row(
+                    children: [
+                      AppWidgets().buttonWidget(
+                        context,
+                        ThemeColorName.nameColor,
+                        "Hire Me!",
+                        ThemeColorName.whiteColors,
+                      ),
+                      const SizedBox(
+                        width: 45.0,
+                      ),
+                      downloadCvWidget(context)
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Flexible(
             child: Container(
-              margin: const EdgeInsets.only(left: 100),
+              width: 533, // Adjust as needed
+              height: 536, // Adjust as needed
               decoration: BoxDecoration(
-                  border:
-                      Border.all(width: 1, color: ThemeColorName.borderColor)),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(300),
-                child: Image.asset(
-                  fit: BoxFit.cover,
-                  "assets/images/background.jpg",
-                  width: 553,
-                  height: 560,
+                color: ThemeColorName.borderColor, // #F2F2F2
+                borderRadius: BorderRadius.circular(300.0), // Radius 300px
+                border: Border.all(
+                  color: ThemeColorName.borderColor, // 1px border color
+                  width: 1.0, // 1px border width
                 ),
+              ),
+              child: Image.asset(
+                fit: BoxFit.cover,
+                "assets/images/background.jpg",
               ),
             ),
           )
@@ -273,7 +317,10 @@ class _PortfolioHomepageState extends State<Homepage> {
               const SizedBox(
                   width: 6.0), // Add some spacing between logo and text
               Text("AeroVision",
-                  style: Theme.of(context).textTheme.labelMedium?.copyWith()),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall
+                      ?.copyWith(color: ThemeColorName.headline)),
             ],
           ),
           Image.asset(
@@ -299,7 +346,10 @@ class _PortfolioHomepageState extends State<Homepage> {
               const SizedBox(
                   width: 6.0), // Add some spacing between logo and text
               Text("AeroVision",
-                  style: Theme.of(context).textTheme.labelMedium?.copyWith()),
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                      color: ThemeColorName.headline,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w900)),
             ],
           ),
 
@@ -313,8 +363,11 @@ class _PortfolioHomepageState extends State<Homepage> {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Text(tab,
-                      style:
-                          Theme.of(context).textTheme.labelSmall!.copyWith()),
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: ThemeColorName.headline,
+                          )),
                 );
               }).toList(),
             ),

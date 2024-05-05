@@ -19,8 +19,8 @@ class AppWidgets {
         child: Text(
           customText,
           textAlign: TextAlign.center,
-          style:
-              Theme.of(context).textTheme.bodySmall?.copyWith(color: textColor),
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: textColor, fontSize: 20, fontWeight: FontWeight.w600),
         ),
       ),
     );
@@ -35,10 +35,21 @@ downloadCvWidget(BuildContext context) {
         border: Border.all(color: ThemeColorName.nameColor)),
     child: Padding(
       padding: const EdgeInsets.fromLTRB(36.0, 13.0, 36.0, 13.0),
-      child: Text(
-        "Download CV",
-        textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.bodySmall?.copyWith(),
+      child: Row(
+        children: [
+          Text(
+            "Download CV",
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: ThemeColorName.nameColor,
+                fontSize: 20,
+                fontWeight: FontWeight.w600),
+          ),
+          const SizedBox(
+            width: 15.0,
+          ),
+          Image.asset("assets/images/download.png"),
+        ],
       ),
     ),
   );

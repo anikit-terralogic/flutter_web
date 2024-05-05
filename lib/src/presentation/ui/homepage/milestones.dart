@@ -36,69 +36,96 @@ milestoneForDesktop(BuildContext context) {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Our Milestones
-            Text("Our Milestones",
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context)
-                    .textTheme
-                    .displayMedium
-                    ?.copyWith(color: ThemeColorName.greycolor)),
+            Text(
+              "Our Milestones",
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: ThemeColorName.greycolor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600),
+            ),
 
             ///  commonTextStyles(AppColors.greyColor, 20, FontWeight.w600)),
             Container(
               margin: const EdgeInsets.only(bottom: 110),
               width: 684,
-              child: Text("What sets our studio apart for your projects?",
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.displayLarge?.copyWith()),
+              child: Text(
+                "What sets our studio apart for your projects?",
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: ThemeColorName.whiteColors,
+                    fontSize: 50,
+                    fontWeight: FontWeight.w700),
+              ),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 81, right: 81, bottom: 150),
-              child: SizedBox(
-                height: 171,
-                child: ListView.separated(
-                  itemCount: mileStoned.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  separatorBuilder: (BuildContext context, int index) =>
-                      const SizedBox(
-                    width: 30,
+              margin: const EdgeInsets.symmetric(horizontal: 81.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 171,
+                    child: ListView.separated(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          width: 257,
+                          height: 171,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(
+                                    0, 3), // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(mileStoned[index].milestonedachieved,
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium
+                                      ?.copyWith(
+                                          color: ThemeColorName.mileStoneColor,
+                                          fontSize: 50,
+                                          fontWeight: FontWeight.w700)),
+                              Text(mileStoned[index].milestonsdescription,
+                                  maxLines: 3,
+                                  textAlign: TextAlign.center,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium
+                                      ?.copyWith(
+                                          color: ThemeColorName.mileStoneColor,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600)),
+                            ],
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return const SizedBox(width: 30); // Space between cards
+                      },
+                      itemCount: mileStoned.length,
+                    ),
                   ),
-                  itemBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                      width: 257,
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(mileStoned[index].milestonedachieved,
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displayLarge
-                                    ?.copyWith(
-                                        color: ThemeColorName.mileStoneColor)),
-                            Text(mileStoned[index].milestonsdescription,
-                                maxLines: 2,
-                                textAlign: TextAlign.center,
-                                overflow: TextOverflow.ellipsis,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displayMedium
-                                    ?.copyWith(
-                                        color: ThemeColorName.mileStoneColor)),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                  const SizedBox(
+                    height: 150,
+                  )
+                ],
               ),
             ),
           ]),
@@ -121,10 +148,10 @@ milestonesForMobile(BuildContext context) {
                 maxLines: 2,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context)
-                    .textTheme
-                    .displayMedium
-                    ?.copyWith(color: ThemeColorName.greycolor)),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: ThemeColorName.greycolor,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600)),
             Container(
                 margin: const EdgeInsets.only(bottom: 30),
                 width: 684,
@@ -132,8 +159,10 @@ milestonesForMobile(BuildContext context) {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
-                    style:
-                        Theme.of(context).textTheme.displayLarge?.copyWith())),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: ThemeColorName.whiteColors,
+                        fontSize: 40,
+                        fontWeight: FontWeight.w700))),
             Container(
               margin: const EdgeInsets.only(left: 81, right: 81, bottom: 60),
               child: ListView.separated(
@@ -160,9 +189,11 @@ milestonesForMobile(BuildContext context) {
                             textAlign: TextAlign.center,
                             style: Theme.of(context)
                                 .textTheme
-                                .displayLarge
+                                .titleMedium
                                 ?.copyWith(
-                                    color: ThemeColorName.mileStoneColor),
+                                    color: ThemeColorName.mileStoneColor,
+                                    fontSize: 50,
+                                    fontWeight: FontWeight.w700),
                           ),
                           Text(
                             mileStoned[index].milestonsdescription,
@@ -171,9 +202,11 @@ milestonesForMobile(BuildContext context) {
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context)
                                 .textTheme
-                                .displayMedium
+                                .titleMedium
                                 ?.copyWith(
-                                    color: ThemeColorName.mileStoneColor),
+                                    color: ThemeColorName.mileStoneColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),

@@ -61,10 +61,10 @@ class _ServicesPageState extends State<ServicesPage> {
           Text(
             "Services",
             textAlign: TextAlign.center,
-            style: Theme.of(context)
-                .textTheme
-                .displayMedium
-                ?.copyWith(color: ThemeColorName.nameColor),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: ThemeColorName.nameColor,
+                fontSize: 20,
+                fontWeight: FontWeight.w600),
           ),
           const SizedBox(
             height: 15.0,
@@ -79,17 +79,17 @@ class _ServicesPageState extends State<ServicesPage> {
               children: <TextSpan>[
                 TextSpan(
                   text: 'Exploring My Design ',
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayLarge
-                      ?.copyWith(color: ThemeColorName.headline),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: ThemeColorName.headline,
+                      fontSize: 50,
+                      fontWeight: FontWeight.w700),
                 ),
                 TextSpan(
                   text: 'Skills',
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayLarge
-                      ?.copyWith(color: ThemeColorName.nameColor),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: ThemeColorName.nameColor,
+                      fontSize: 50,
+                      fontWeight: FontWeight.w700),
                 ),
               ],
             ),
@@ -107,10 +107,10 @@ class _ServicesPageState extends State<ServicesPage> {
                 maxLines: 2,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium
-                    ?.copyWith(color: ThemeColorName.headline),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: ThemeColorName.headline,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400),
               )),
           Container(
             margin: const EdgeInsets.only(top: 30.0, left: 81, right: 30),
@@ -140,139 +140,201 @@ class _ServicesPageState extends State<ServicesPage> {
               ],
             ),
           ),
-
           Container(
-            margin: const EdgeInsets.only(left: 81),
-            child: SizedBox(
-              height: 366,
-              child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: (context, i) => GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            currentIndex = i;
-                          });
-                        },
-                        child: SizedBox(
-                          width: 406,
-                          child: Card(
-                            color: currentIndex != i
-                                ? ThemeColorName.whiteColors
-                                : ThemeColorName.nameColor,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(30.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  // currentIndex == i
-                                  //     ?
-                                  Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Image.asset(
-                                        colorBlendMode: BlendMode.color,
-                                        "assets/images/services_jpg.jpg",
-                                        height: 95),
-                                    // Image.asset(
-                                    //     "assets/images/services_enabled.jpg",
-                                    //     height: 95),
-                                  )
-                                  // : Align(
-                                  //     alignment: Alignment.topLeft,
-                                  //     child: Image.asset(
-                                  //         colorBlendMode:
-                                  //             BlendMode.color,
-                                  //         "assets/images/services_jpg.jpg",
-                                  //         height: 95),
-                                  //   ),,
-                                  ,
-                                  Text(
-                                    servicesPages[i].servicesOffered,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayLarge
-                                        ?.copyWith(
-                                          color: currentIndex != i
-                                              ? const Color.fromARGB(
-                                                  255, 95, 95, 95)
-                                              : ThemeColorName.whiteColors,
-                                        ),
-                                  ),
-                                  Container(
-                                    height: 93,
-                                    margin: const EdgeInsets.only(top: 10.0),
-                                    child: Text(
-                                      servicesPages[i].servicesDescription,
-                                      maxLines: 3,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleMedium
-                                          ?.copyWith(
-                                            color: currentIndex != i
-                                                ? const Color.fromARGB(
-                                                    255, 95, 95, 95)
-                                                : ThemeColorName.whiteColors,
-                                          ),
-                                    ),
-                                  ),
-                                  Text(
-                                    "Learn More ",
+            margin: EdgeInsets.only(left: 81.0, top: 30),
+            height: 366, // Set a fixed height or use constraints as needed
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, i) => GestureDetector(
+                onTap: () {
+                  setState(() {
+                    currentIndex = i;
+                  });
+                },
+                child: SizedBox(
+                  width: 406,
+                  child: Card(
+                    color: currentIndex != i
+                        ? ThemeColorName.whiteColors
+                        : ThemeColorName.nameColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Image.asset(
+                                colorBlendMode: BlendMode.color,
+                                "assets/images/services_jpg.jpg",
+                                height: 95),
+                          ),
+                          Text(servicesPages[i].servicesOffered,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                      color: currentIndex != i
+                                          ? const Color.fromARGB(
+                                              255, 95, 95, 95)
+                                          : ThemeColorName.whiteColors,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w700)),
+                          Container(
+                            height: 93,
+                            margin: const EdgeInsets.only(top: 10.0),
+                            child: Text(servicesPages[i].servicesDescription,
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium
+                                    ?.copyWith(
+                                        color: currentIndex != i
+                                            ? const Color.fromARGB(
+                                                255, 95, 95, 95)
+                                            : ThemeColorName.whiteColors,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w400)),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(right: 10.0),
+                                child: Text("Learn More ",
                                     maxLines: 1,
                                     textAlign: TextAlign.left,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .displayMedium
+                                        .titleMedium
                                         ?.copyWith(
                                             color: currentIndex != i
                                                 ? ThemeColorName.nameColor
-                                                : ThemeColorName.whiteColors),
-                                  ),
-                                  // Row(
-                                  //   mainAxisSize: MainAxisSize.min,
-                                  //   children: [
-
-                                  //     IconButton(
-                                  //       icon: Icon(Icons.arrow_forward,
-                                  //           color: currentIndex != i
-                                  //               ? ThemeColorName.nameColor
-                                  //               : ThemeColorName.whiteColor),
-                                  //       onPressed: () {},
-                                  //     )
-                                  //   ],
-                                  // ),
-                                ],
+                                                : ThemeColorName.whiteColors,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w400)),
                               ),
-                            ),
+                              Image.asset(
+                                "assets/images/arrow.png",
+                                color: currentIndex != i
+                                    ? ThemeColorName.nameColor
+                                    : ThemeColorName.whiteColors,
+                              )
+                            ],
                           ),
-                        ),
+                        ],
                       ),
-                  separatorBuilder: (context, index) => const SizedBox(
-                        width: 30,
-                      ),
-                  itemCount: servicesPages.length),
+                    ),
+                  ),
+                ),
+              ),
+              separatorBuilder: (context, index) => const SizedBox(
+                width: 30,
+              ),
+              itemCount: servicesPages.length,
             ),
-          )
-          // SingleChildScrollView(
-          //   scrollDirection: Axis.horizontal,
-          //   child: Row(
-          //     children: [
-          //       for (int i = currentIndex;
-          //           i < currentIndex + 3 && i < servicesPages.length;
-          //           i++)
-          //         GestureDetector(
-          //           onTap: () {
-          //             setState(() {
-          //               currentIndex = i;
-          //             });
-          //           },
-          //           child:
-          //         )
-          //     ],
-          //   ),
-          // ),
+          ),
+
+          // SizedBox(
+          //   height: 366,
+          //   child: ListView.separated(
+          //       scrollDirection: Axis.horizontal,
+          //       shrinkWrap: true,
+          //       itemBuilder: (context, i) => GestureDetector(
+          //             onTap: () {
+          //               setState(() {
+          //                 currentIndex = i;
+          //               });
+          //             },
+          //             child: SizedBox(
+          //               width: 406,
+          //               child: Card(
+          //                 color: currentIndex != i
+          //                     ? ThemeColorName.whiteColors
+          //                     : ThemeColorName.nameColor,
+          //                 shape: RoundedRectangleBorder(
+          //                     borderRadius: BorderRadius.circular(20.0)),
+          //                 child: Padding(
+          //                   padding: const EdgeInsets.all(30.0),
+          //                   child: Column(
+          //                     mainAxisSize: MainAxisSize.min,
+          //                     children: [
+          //                       Align(
+          //                         alignment: Alignment.topLeft,
+          //                         child: Image.asset(
+          //                             colorBlendMode: BlendMode.color,
+          //                             "assets/images/services_jpg.jpg",
+          //                             height: 95),
+          //                       ),
+          //                       Text(servicesPages[i].servicesOffered,
+          //                           style: Theme.of(context)
+          //                               .textTheme
+          //                               .titleMedium
+          //                               ?.copyWith(
+          //                                   color: currentIndex != i
+          //                                       ? const Color.fromARGB(
+          //                                           255, 95, 95, 95)
+          //                                       : ThemeColorName.whiteColors,
+          //                                   fontSize: 25,
+          //                                   fontWeight: FontWeight.w700)),
+          //                       Container(
+          //                         height: 93,
+          //                         margin: const EdgeInsets.only(top: 10.0),
+          //                         child: Text(
+          //                             servicesPages[i].servicesDescription,
+          //                             maxLines: 3,
+          //                             overflow: TextOverflow.ellipsis,
+          //                             style: Theme.of(context)
+          //                                 .textTheme
+          //                                 .titleMedium
+          //                                 ?.copyWith(
+          //                                     color: currentIndex != i
+          //                                         ? const Color.fromARGB(
+          //                                             255, 95, 95, 95)
+          //                                         : ThemeColorName.whiteColors,
+          //                                     fontSize: 18,
+          //                                     fontWeight: FontWeight.w400)),
+          //                       ),
+          //                       Row(
+          //                         children: [
+          //                           Container(
+          //                             margin:
+          //                                 const EdgeInsets.only(right: 10.0),
+          //                             child: Text("Learn More ",
+          //                                 maxLines: 1,
+          //                                 textAlign: TextAlign.left,
+          //                                 style: Theme.of(context)
+          //                                     .textTheme
+          //                                     .titleMedium
+          //                                     ?.copyWith(
+          //                                         color: currentIndex != i
+          //                                             ? ThemeColorName.nameColor
+          //                                             : ThemeColorName
+          //                                                 .whiteColors,
+          //                                         fontSize: 18,
+          //                                         fontWeight: FontWeight.w400)),
+          //                           ),
+          //                           Image.asset(
+          //                             "assets/images/arrow.png",
+          //                             color: currentIndex != i
+          //                                 ? ThemeColorName.nameColor
+          //                                 : ThemeColorName.whiteColors,
+          //                           )
+          //                         ],
+          //                       ),
+          //                     ],
+          //                   ),
+          //                 ),
+          //               ),
+          //             ),
+          //           ),
+          //       separatorBuilder: (context, index) => const SizedBox(
+          //             width: 30,
+          //           ),
+          //       itemCount: servicesPages.length),
+          // )
         ],
       ),
     );
@@ -288,7 +350,10 @@ class _ServicesPageState extends State<ServicesPage> {
           Text(
             "Services",
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: ThemeColorName.nameColor,
+                fontSize: 18,
+                fontWeight: FontWeight.w600),
           ),
           const SizedBox(
             height: 15.0,
@@ -303,11 +368,17 @@ class _ServicesPageState extends State<ServicesPage> {
               children: <TextSpan>[
                 TextSpan(
                   text: 'Exploring My Design ',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: ThemeColorName.nameColor,
+                      fontSize: 40,
+                      fontWeight: FontWeight.w700),
                 ),
                 TextSpan(
                   text: 'Skills',
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: ThemeColorName.nameColor,
+                      fontSize: 40,
+                      fontWeight: FontWeight.w700),
                 ),
               ],
             ),
@@ -325,7 +396,7 @@ class _ServicesPageState extends State<ServicesPage> {
                 maxLines: 2,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     color: ThemeColorName.headline,
                     fontSize: 18,
                     fontWeight: FontWeight.w400)),
@@ -373,7 +444,7 @@ class _ServicesPageState extends State<ServicesPage> {
                           });
                         },
                         child: SizedBox(
-                          width: 406,
+                          width: 370,
                           child: Card(
                             color: currentIndex != i
                                 ? ThemeColorName.whiteColors
@@ -406,19 +477,17 @@ class _ServicesPageState extends State<ServicesPage> {
                                   //         height: 95),
                                   //   ),,
                                   ,
-                                  Text(
-                                    servicesPages[i].servicesOffered,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayLarge
-                                        ?.copyWith(
-                                            color: currentIndex != i
-                                                ? const Color.fromARGB(
-                                                    255, 95, 95, 95)
-                                                : ThemeColorName.whiteColors,
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 25.0),
-                                  ),
+                                  Text(servicesPages[i].servicesOffered,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium
+                                          ?.copyWith(
+                                              color: currentIndex != i
+                                                  ? const Color.fromARGB(
+                                                      255, 95, 95, 95)
+                                                  : ThemeColorName.whiteColors,
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 25.0)),
                                   Container(
                                     height: 93,
                                     margin: const EdgeInsets.only(top: 10.0),
@@ -428,7 +497,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                       overflow: TextOverflow.ellipsis,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .displayMedium
+                                          .titleMedium
                                           ?.copyWith(
                                               color: currentIndex != i
                                                   ? ThemeColorName
@@ -444,7 +513,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                     textAlign: TextAlign.left,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .displayMedium
+                                        .titleMedium
                                         ?.copyWith(
                                             color: currentIndex != i
                                                 ? ThemeColorName.nameColor

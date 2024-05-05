@@ -64,18 +64,20 @@ class _AboutMeSectionState extends State<AboutMeSection> {
       margin: const EdgeInsets.symmetric(horizontal: 83),
       child: Row(
         children: [
-          Container(
-            margin: const EdgeInsets.only(right: 30),
-            decoration: BoxDecoration(
-                border:
-                    Border.all(width: 1, color: ThemeColorName.borderColor)),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(300),
-              child: Image.asset(
-                fit: BoxFit.contain,
-                "assets/images/background.jpg",
-                width: 527,
-                height: 623,
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.only(right: 30),
+              decoration: BoxDecoration(
+                  border:
+                      Border.all(width: 1, color: ThemeColorName.borderColor)),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(300),
+                child: Image.asset(
+                  fit: BoxFit.contain,
+                  "assets/images/aboutme_image.png",
+                  width: 627,
+                  height: 623,
+                ),
               ),
             ),
           ),
@@ -90,8 +92,13 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                   Container(
                     margin: const EdgeInsets.only(bottom: 10.0, top: 100),
                     child: Text("About Me",
-                        style:
-                            Theme.of(context).textTheme.bodySmall?.copyWith()),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(
+                                color: ThemeColorName.nameColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600)),
                   ),
                   RichText(
                     maxLines: 2,
@@ -101,25 +108,59 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                             text: '20 Year’s Experience on ',
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyLarge
-                                ?.copyWith()),
+                                .titleMedium
+                                ?.copyWith(
+                                    color: ThemeColorName.nameColor,
+                                    fontSize: 50,
+                                    fontWeight: FontWeight.w700)),
                         TextSpan(
                             text: 'Product Design\n',
                             style: Theme.of(context)
                                 .textTheme
-                                .titleLarge
-                                ?.copyWith()),
+                                .titleMedium
+                                ?.copyWith(
+                                    color: ThemeColorName.headline,
+                                    fontSize: 50,
+                                    fontWeight: FontWeight.w700)),
                       ],
                     ),
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 25.0, bottom: 40),
-                    child: Text(
-                      "Hello there! I'm Robert Junior. I specialize in web design and development, and I'm deeply passionate and committed to my craft. With 20 years of experience as a professional graphic designer",
-                      style:
-                          Theme.of(context).textTheme.titleMedium?.copyWith(),
-                      maxLines: 4,
+                    child: RichText(
+                      maxLines: 3,
                       overflow: TextOverflow.ellipsis,
+                      text: TextSpan(
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            color: ThemeColorName.headline,
+                            height: 1.4),
+                        children: const <TextSpan>[
+                          TextSpan(
+                            text: 'Hello there! I\'m ',
+                          ),
+                          TextSpan(
+                            text: 'Robert Junior.',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          TextSpan(
+                            text:
+                                ' I specialize in web design and development, and I\'m deeply passionate and committed to my craft. With ',
+                          ),
+                          TextSpan(
+                            text: '20 years',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          TextSpan(
+                            text:
+                                ' of experience as a professional graphic designer',
+                          ),
+                        ],
+                      ),
                     ),
                   ),
 
@@ -230,12 +271,41 @@ class _AboutMeSectionState extends State<AboutMeSection> {
           ),
           Container(
             margin: const EdgeInsets.only(top: 25.0, bottom: 50),
-            child: Text(
-              "Hello there! I'm Robert Junior. I specialize in web design and development, and I'm deeply passionate and committed to my craft. With 20 years of experience as a professional graphic designer",
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(),
+            child: RichText(
               maxLines: 4,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
+              text: TextSpan(
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: ThemeColorName.headline,
+                ),
+                children: const <TextSpan>[
+                  TextSpan(
+                    text: 'Hello there! I\'m ',
+                  ),
+                  TextSpan(
+                    text: 'Robert Junior.',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  TextSpan(
+                    text:
+                        ' I specialize in web design and development, and I\'m deeply passionate and committed to my craft. With ',
+                  ),
+                  TextSpan(
+                    text: '20 years',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  TextSpan(
+                    text:
+                        ' of experience as a professional graphic designer...',
+                  ),
+                ],
+              ),
             ),
           ),
 

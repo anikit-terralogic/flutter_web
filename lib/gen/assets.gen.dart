@@ -29,6 +29,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/button_previous_page.png
   AssetGenImage get buttonPreviousPage => const AssetGenImage('assets/images/button_previous_page.png');
 
+  /// File path: assets/images/download.png
+  AssetGenImage get download => const AssetGenImage('assets/images/download.png');
+
   /// File path: assets/images/email.png
   AssetGenImage get email => const AssetGenImage('assets/images/email.png');
 
@@ -132,6 +135,7 @@ class $AssetsImagesGen {
         background,
         buttonNextPage,
         buttonPreviousPage,
+        download,
         email,
         facebook,
         five,
