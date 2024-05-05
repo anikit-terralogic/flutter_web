@@ -10,5 +10,5 @@ void main()async {
 
   runApp(const Application());
 }
-var themeManager = ThemeManager();
+// var themeManager = ThemeManager();
 

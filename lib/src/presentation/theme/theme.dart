@@ -1,9 +1,5 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:data/data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-
-import '../../../gen/colors.gen.dart';
+import 'package:sample_flutter_web/src/presentation/theme/color_theme.dart';
 
 // final ThemeData lightTheme = ThemeData(
 //     primarySwatch: Colors.blue,
@@ -77,100 +73,74 @@ import '../../../gen/colors.gen.dart';
 //     bottomSheetTheme:
 //         const BottomSheetThemeData(backgroundColor: Colors.transparent));
 
-Color getTextColor(AppearanceMode mode) {
-  switch (mode) {
-    case AppearanceMode.light:
-      return ColorName.borderColor;
-    case AppearanceMode.dark:
-      return ColorName.borderColor;
-    case AppearanceMode.system:
-      var brightness =
-          SchedulerBinding.instance.platformDispatcher.platformBrightness;
-      return brightness == Brightness.light
-          ? ColorName.borderColor
-          : ColorName.borderColor;
-    case AppearanceMode.contrast:
-      return ColorName.borderColor;
-  }
-}
+// Color getTextColor(AppearanceMode mode) {
+//   switch (mode) {
+//     case AppearanceMode.light:
+//       return ColorName.borderColor;
+//     case AppearanceMode.dark:
+//       return ColorName.borderColor;
+//     case AppearanceMode.system:
+//       var brightness =
+//           SchedulerBinding.instance.platformDispatcher.platformBrightness;
+//       return brightness == Brightness.light
+//           ? ColorName.borderColor
+//           : ColorName.borderColor;
+//     case AppearanceMode.contrast:
+//       return ColorName.borderColor;
+//   }
+// }
 
-TextTheme _buildTextTheme(AppearanceMode mode) {
+TextTheme _buildTextTheme() {
   return TextTheme(
-    displayLarge: TextStyle(
-      fontWeight: FontWeight.w500,
-      fontSize: 32.0,
-      color: getTextColor(mode),
-      //  fontFamily: FontFamily.lato,
-    ),
-    displayMedium: TextStyle(
-      fontWeight: FontWeight.w600,
-      fontSize: 24.0,
-      color: getTextColor(mode),
-      //  fontFamily: FontFamily.lato,
-    ),
-    displaySmall: TextStyle(
-      fontWeight: FontWeight.w600,
-      fontSize: 20.0,
-      color: getTextColor(mode),
-      //  fontFamily: FontFamily.lato,
-    ),
-    headlineMedium: TextStyle(
-      fontWeight: FontWeight.w700,
-      color: getTextColor(mode),
-      fontSize: 18.0,
-    ),
-    headlineSmall: TextStyle(
-      fontWeight: FontWeight.w700,
-      color: getTextColor(mode),
-      fontSize: 16.0,
-    ),
+    ///
     titleLarge: TextStyle(
       fontWeight: FontWeight.w700,
-      color: getTextColor(mode),
-      fontSize: 16.0,
+      color: ThemeColorName.headline,
+      fontSize: 50.0,
     ),
     titleMedium: TextStyle(
-      fontWeight: FontWeight.w600,
-      color: getTextColor(mode),
+      fontWeight: FontWeight.w400,
+      color: ThemeColorName.headline,
       fontSize: 18.0,
     ),
     titleSmall: TextStyle(
       fontWeight: FontWeight.w600,
-      color: getTextColor(mode),
-      fontSize: 16.0,
+      color: ThemeColorName.headline,
+      fontSize: 20.0,
     ),
+
+    ///
     bodyLarge: TextStyle(
-      fontWeight: FontWeight.w400,
-      color: getTextColor(mode),
-      fontSize: 16.0,
+      fontWeight: FontWeight.w700,
+      color: ThemeColorName.nameColor,
+      fontSize: 50.0,
     ),
     bodyMedium: TextStyle(
-      fontWeight: FontWeight.w400,
-      color: getTextColor(mode),
-      fontSize: 14.0,
+      fontWeight: FontWeight.w600,
+      color: ThemeColorName.nameColor,
+      fontSize: 40.0,
     ),
     bodySmall: TextStyle(
+      fontWeight: FontWeight.w600,
+      color: ThemeColorName.nameColor,
+      fontSize: 20.0,
+    ),
+
+    ///
+    displayLarge: TextStyle(
+      fontWeight: FontWeight.w700,
+      color: ThemeColorName.whiteColors,
+      fontSize: 50.0,
+    ),
+    displayMedium: TextStyle(
+      fontWeight: FontWeight.w600,
+      color: ThemeColorName.whiteColors,
+      fontSize: 20.0,
+    ),
+    displaySmall: TextStyle(
       fontWeight: FontWeight.w400,
-      color: getTextColor(mode),
-      fontSize: 12.0,
-      letterSpacing: 0.0,
-    ),
-    labelLarge: TextStyle(
-      fontWeight: FontWeight.w600,
-      color: getTextColor(mode),
-      fontSize: 14.0,
-    ),
-    labelMedium: TextStyle(
-      fontWeight: FontWeight.w600,
-      color: getTextColor(mode),
-      fontSize: 12.0,
-      letterSpacing: 0.0,
-    ),
-    labelSmall: TextStyle(
-      fontWeight: FontWeight.w600,
-      color: getTextColor(mode),
-      fontSize: 12.0,
-      letterSpacing: 0.0,
+      color: ThemeColorName.whiteColors,
+      fontSize: 20.0,
     ),
   );
 }

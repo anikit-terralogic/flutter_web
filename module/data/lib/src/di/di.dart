@@ -3,9 +3,8 @@ import 'package:injectable/injectable.dart';
 
 import 'di.config.dart';
 
-@InjectableInit(
-  initializerName: r'$initDataGetIt'
-)
+@InjectableInit(initializerName: r'$initDataGetIt')
 final GetIt getIt = GetIt.instance;
 
-Future configureDataInjection() async => GetItInjectableX(getIt).$initDataGetIt();
+Future configureDataInjection() async =>
+    GetItInjectableX(getIt).$initDataGetIt();

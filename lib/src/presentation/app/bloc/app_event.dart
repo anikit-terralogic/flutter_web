@@ -21,9 +21,9 @@ class AppInitiated extends AppEvent with _$AppInitiated {
   const factory AppInitiated() = _AppInitiated;
 }
 
-@freezed
-class AppThemeChanged extends AppEvent with _$AppThemeChanged {
-  const factory AppThemeChanged({
-    required AppearanceMode themeMode,
-  }) = _AppThemeChanged;
-}
+// @freezed
+// class AppThemeChanged extends AppEvent with _$AppThemeChanged {
+//   const factory AppThemeChanged({
+//     required AppearanceMode themeMode,
+//   }) = _AppThemeChanged;
+// }

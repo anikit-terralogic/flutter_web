@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/homepage.dart';
 import 'package:shared/shared.dart';
 import 'package:sample_flutter_web/src/presentation/widget/dialogue/gobal_dialog.dart';
 
@@ -39,7 +40,8 @@ abstract class BasePage<B extends BaseBloc> extends StatelessWidget {
                 children: [
                   _buildBody(context),
                   BlocBuilder<CommonBloc, CommonState>(
-                    buildWhen: (previous, current) => previous.isLoading != current.isLoading,
+                    buildWhen: (previous, current) =>
+                        previous.isLoading != current.isLoading,
                     builder: (context, state) {
                       return Visibility(
                         visible: state.isLoading,
@@ -83,15 +85,17 @@ abstract class BasePage<B extends BaseBloc> extends StatelessWidget {
   Widget buildPage(BuildContext context);
 
   Widget _buildBody(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: themeManager,
-      child: Builder(
-        builder: (context) {
-          final themeModel = context.watch<ThemeManager>().currentTheme;
-          logger.log('Change theme: $themeModel');
-          return buildPage(context);
-        },
-      ),
-    );
+    return buildPage(context);
+    // ChangeNotifierProvider.value(
+    //   value: themeManager,
+    //   child: Builder(
+    //     builder: (context) {
+    //       // final themeModel = context.watch<ThemeManager>().currentTheme;
+    //       // logger.log('Change theme: $themeModel');
+
+    //       return buildPage(context);
+    //     },
+    //   ),
+    // );
   }
 }

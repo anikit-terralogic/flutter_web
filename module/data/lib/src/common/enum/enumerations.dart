@@ -18,4 +18,4 @@ enum LogLevel {
 }
 
 
-enum AppearanceMode { light, dark, system, contrast }
+// enum AppearanceMode { light, dark, system, contrast }

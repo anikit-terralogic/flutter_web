@@ -36,20 +36,21 @@ dependencies:
   json_annotation: ^4.8.0
   remote:
     path: ./module/remote
+  responsive_builder: ^0.7.0
   rxdart: ^0.27.2
   shared:
     path: ./module/shared
   smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
-
-  # auto route
   auto_route_generator: ^5.0.3
 
   bloc_test: 9.0.3
 
   # Auto generate some files
   build_runner: ^2.3.3
+  date_picker_timeline: ^1.2.5
+  flutter_calendar_carousel: ^2.4.2
 
   flutter_gen_runner: ^5.2.0
 
@@ -59,8 +60,6 @@ dev_dependencies:
 
   injectable_generator: ^2.1.5
   json_serializable: ^6.7.0
-  date_picker_timeline: ^1.2.5
-  flutter_calendar_carousel: ^2.4.2
 # Config generate when build
 flutter_gen:
   output: lib/gen/
@@ -88,15 +87,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-
-  fonts:
-    - family: Work Sans
-      fonts:
-        - asset: assets/fonts/WorkSans-Regular.ttf
-        - asset: assets/fonts/WorkSans-Bold.ttf
-        - asset: assets/fonts/WorkSans-Italic.ttf
-
-
+  # fonts:
+  #   - family: Work Sans
+  #     fonts:
+  #       - asset: assets/fonts/WorkSans-Regular.ttf
+  #       - asset: assets/fonts/WorkSans-Bold.ttf
+  #       - asset: assets/fonts/WorkSans-Italic.ttf
 flutter_intl:
   enabled: true
   class_name: LanguageTranslation

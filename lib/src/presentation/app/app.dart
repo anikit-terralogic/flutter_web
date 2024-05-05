@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/homepage.dart';
 import 'package:shared/shared.dart';
 
 import 'package:sample_flutter_web/src/presentation/app/bloc/app_bloc.dart';
@@ -19,7 +20,8 @@ class Application extends StatefulWidget {
   State<Application> createState() => _ApplicationState();
 }
 
-class _ApplicationState extends BasePageState<Application, AppBloc> with WidgetsBindingObserver {
+class _ApplicationState extends BasePageState<Application, AppBloc>
+    with WidgetsBindingObserver {
   final _appRouter = GetIt.instance.get<AppRouter>();
 
   @override
@@ -41,32 +43,33 @@ class _ApplicationState extends BasePageState<Application, AppBloc> with Widgets
   @override
   void didChangeAccessibilityFeatures() {
     Future.delayed(const Duration(milliseconds: 300), () {
-      logger.log('Switch Contrast comes here ${MediaQuery.maybeHighContrastOf(context)}');
-      checkThemeAndUpdate();
+      logger.log(
+          'Switch Contrast comes here ${MediaQuery.maybeHighContrastOf(context)}');
+      //  checkThemeAndUpdate();
     });
     super.didChangeAccessibilityFeatures();
   }
 
-  @override
-  void didChangePlatformBrightness() {
-    Future.delayed(const Duration(milliseconds: 300), checkThemeAndUpdate);
-    super.didChangePlatformBrightness();
-  }
+  // @override
+  // void didChangePlatformBrightness() {
+  //   Future.delayed(const Duration(milliseconds: 300), checkThemeAndUpdate);
+  //   super.didChangePlatformBrightness();
+  // }
 
-  checkThemeAndUpdate() {
-    final themeMode = AppearanceMode.system;
-    if (themeMode == AppearanceMode.system || themeMode == AppearanceMode.contrast) {
-      if (themeMode == AppearanceMode.system) {
-        if (MediaQuery.maybeHighContrastOf(context) == true) {
-          bloc.add(const AppThemeChanged(themeMode: AppearanceMode.contrast));
-        } else {
-          bloc.add(const AppThemeChanged(themeMode: AppearanceMode.system));
-        }
-      } else {
-        bloc.add(const AppThemeChanged(themeMode: AppearanceMode.contrast));
-      }
-    }
-  }
+  // checkThemeAndUpdate() {
+  //   final themeMode = AppearanceMode.system;
+  //   if (themeMode == AppearanceMode.system || themeMode == AppearanceMode.contrast) {
+  //     if (themeMode == AppearanceMode.system) {
+  //       if (MediaQuery.maybeHighContrastOf(context) == true) {
+  //         bloc.add(const AppThemeChanged(themeMode: AppearanceMode.contrast));
+  //       } else {
+  //         bloc.add(const AppThemeChanged(themeMode: AppearanceMode.system));
+  //       }
+  //     } else {
+  //       bloc.add(const AppThemeChanged(themeMode: AppearanceMode.contrast));
+  //     }
+  //   }
+  // }
 
   double _getFontScale(double? scale) {
     return (scale ?? 0) >= 1.15 //2.0
@@ -86,26 +89,28 @@ class _ApplicationState extends BasePageState<Application, AppBloc> with Widgets
         bool isDevice = true;
 
         return MediaQuery(
-          data: data.copyWith(textScaleFactor: _getFontScale(isDevice ? data.textScaleFactor : state.fontScale)),
+          data: data.copyWith(
+              textScaleFactor: _getFontScale(
+                   data.textScaleFactor )),
           child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
-            localizationsDelegates: const [LanguageTranslation.delegate],
-            supportedLocales: LanguageTranslation.delegate.supportedLocales,
+            // localizationsDelegates: const [LanguageTranslation.delegate],
+            ///  supportedLocales: LanguageTranslation.delegate.supportedLocales,
             routeInformationParser: _appRouter.defaultRouteParser(),
             routerDelegate: _appRouter.delegate(),
-            localeResolutionCallback: (Locale? locale, Iterable<Locale> supportedLocales) {
-              if (supportedLocales.any((element) => locale?.languageCode.contains(element.toString()) == true)) {
-                String currentLanguageCode = state.currentLanguageCode ?? 'en';
-                if (currentLanguageCode != locale!.languageCode) {
-                  SchedulerBinding.instance.addPostFrameCallback((_) {
-                    bloc.add(AppLanguageChanged(languageCode: locale.languageCode));
-                  });
-                }
+            // localeResolutionCallback: (Locale? locale, Iterable<Locale> supportedLocales) {
+            //   if (supportedLocales.any((element) => locale?.languageCode.contains(element.toString()) == true)) {
+            //     String currentLanguageCode = state.currentLanguageCode ?? 'en';
+            //     if (currentLanguageCode != locale!.languageCode) {
+            //       SchedulerBinding.instance.addPostFrameCallback((_) {
+            //         bloc.add(AppLanguageChanged(languageCode: locale.languageCode));
+            //       });
+            //     }
 
-                return locale;
-              }
-              return const Locale('en', '');
-            },
+            //     return locale;
+            //   }
+            //   return const Locale('en', '');
+            // },
           ),
         );
       },

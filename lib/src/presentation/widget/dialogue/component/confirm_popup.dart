@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../theme/color_theme.dart';
 
-
 class ConfirmPopup extends StatelessWidget {
   final String title;
   final String message;
@@ -35,7 +34,7 @@ class ConfirmPopup extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleMedium
-                  ?.copyWith(color: ThemeColorName.customButtonColor),
+                  ?.copyWith(color: ThemeColorName.nameColor),
             ),
             const SizedBox(
               height: 12.0,
@@ -46,7 +45,7 @@ class ConfirmPopup extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium
-                  ?.copyWith(color: ThemeColorName.customButtonColor),
+                  ?.copyWith(color: ThemeColorName.nameColor),
             ),
             const SizedBox(
               height: 32.0,
@@ -57,11 +56,11 @@ class ConfirmPopup extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: ElevatedButton(
-
                     onPressed: () {
                       Navigator.pop(context);
                       onOk?.call();
-                    }, child: Text(okText),
+                    },
+                    child: Text(okText),
                   ),
                 ),
                 const SizedBox(

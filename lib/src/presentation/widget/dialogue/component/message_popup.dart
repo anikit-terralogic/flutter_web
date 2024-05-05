@@ -20,17 +20,14 @@ class MessagePopup extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
-            (status == true)
-                ? Icon(Icons.check)
-
-                : Icon(Icons.warning),
+            (status == true) ? Icon(Icons.check) : Icon(Icons.warning),
             Text(
               title ?? LanguageTranslation.current.message,
               textAlign: TextAlign.center,
               style: Theme.of(context)
                   .textTheme
                   .displaySmall
-                  ?.copyWith(color: ThemeColorName.customButtonColor),
+                  ?.copyWith(color: ThemeColorName.nameColor),
             ),
             const SizedBox(
               height: 12.0,
@@ -41,7 +38,7 @@ class MessagePopup extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium
-                  ?.copyWith(color: ThemeColorName.customButtonColor),
+                  ?.copyWith(color: ThemeColorName.nameColor),
             ),
           ],
         ),

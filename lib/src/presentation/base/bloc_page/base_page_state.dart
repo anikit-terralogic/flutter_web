@@ -10,10 +10,10 @@ import 'package:shared/shared.dart';
 import '../../../../main.dart';
 import '../../../../route/app_router.dart';
 import '../../app/bloc/app_bloc.dart';
-import '../../theme/color_theme.dart';
 import '../../theme/theme_manager.dart';
-import '../../widget/dialogue/loading_dialog.dart';
+import '../../ui/homepage/homepage.dart';
 import '../../widget/dialogue/gobal_dialog.dart';
+import '../../widget/dialogue/loading_dialog.dart';
 import '../../widget/error_states/no_internet.dart';
 import '../../widget/touch_effect.dart';
 import '../bloc/base_bloc.dart';
@@ -22,8 +22,7 @@ import '../common/common_event.dart';
 import '../common/common_state.dart';
 
 abstract class BasePageState<T extends StatefulWidget, B extends BaseBloc>
-    extends BasePageStateDelegate<T, B> {
-}
+    extends BasePageStateDelegate<T, B> {}
 
 abstract class BasePageStateDelegate<T extends StatefulWidget,
     B extends BaseBloc> extends State<T> {
@@ -39,7 +38,6 @@ abstract class BasePageStateDelegate<T extends StatefulWidget,
 
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => bloc),
@@ -49,7 +47,7 @@ abstract class BasePageStateDelegate<T extends StatefulWidget,
         child: isAppWidget
             ? _buildBody(context)
             : Stack(
-          textDirection: TextDirection.ltr,
+                textDirection: TextDirection.ltr,
                 children: [
                   _buildBody(context),
                   BlocBuilder<CommonBloc, CommonState>(
@@ -64,7 +62,7 @@ abstract class BasePageStateDelegate<T extends StatefulWidget,
                   ),
                   BlocBuilder<CommonBloc, CommonState>(
                     buildWhen: (previous, current) =>
-                    previous.hasNetworkConnection !=
+                        previous.hasNetworkConnection !=
                         current.hasNetworkConnection,
                     builder: (context, state) {
                       return Visibility(
@@ -73,7 +71,7 @@ abstract class BasePageStateDelegate<T extends StatefulWidget,
                           filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
                           child: TouchEffect(
                             child: Container(
-                              color: ThemeColorName.customButtonColor.withOpacity(0.9),
+                              /// color: ThemeColorName.customButtonColor.withOpacity(0.9),
                               child: Dialog(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(24)),
@@ -94,7 +92,6 @@ abstract class BasePageStateDelegate<T extends StatefulWidget,
                       );
                     },
                   )
-
                 ],
               ),
       ),
@@ -111,18 +108,18 @@ abstract class BasePageStateDelegate<T extends StatefulWidget,
           final type = state.messageDialog?.type;
           switch (type) {
             case ErrorMessageType.timeout:
-              // showSessionTimedOutDialog(
-              //     context, state.messageDialog?.onDismiss);
+            // showSessionTimedOutDialog(
+            //     context, state.messageDialog?.onDismiss);
             //  break;
             case ErrorMessageType.unauthorized:
-             // showUnauthorizedDialog(context, state.messageDialog?.onDismiss);
+            // showUnauthorizedDialog(context, state.messageDialog?.onDismiss);
             //  break;
             case ErrorMessageType.pageNotFound:
             //  showPageNotFountDialog(context, state.messageDialog?.onDismiss);
             //  break;
             case ErrorMessageType.serverError:
-          //    showServerErrorDialog(context, state.messageDialog?.onDismiss);
-              //break;
+            //    showServerErrorDialog(context, state.messageDialog?.onDismiss);
+            //break;
             case ErrorMessageType.other:
               showMessageDialog(
                   context: context,
@@ -130,8 +127,6 @@ abstract class BasePageStateDelegate<T extends StatefulWidget,
                   status: state.messageDialog?.status);
               break;
             default:
-
-
               showMessageDialog(
                   context: context,
                   message: state.messageDialog!,
@@ -161,17 +156,18 @@ abstract class BasePageStateDelegate<T extends StatefulWidget,
 
   Widget buildPage(BuildContext context);
 
-  Widget _buildBody(BuildContext context){
-    return ChangeNotifierProvider.value(
-      value: themeManager,
-      child: Builder(
-        builder: (context) {
-          final themeModel = context.watch<ThemeManager>().currentTheme;
-          logger.log('Change theme: $themeModel');
-          return buildPage(context);
-        },
-      ),
-    );
+  Widget _buildBody(BuildContext context) {
+    return buildPage(context);
+    // ChangeNotifierProvider.value(
+    //   value: themeManager,
+    //   child: Builder(
+    //     builder: (context) {
+    //       // final themeModel = context.watch<ThemeManager>().currentTheme;
+    //       // logger.log('Change theme: $themeModel');
+    //       return buildPage(context);
+    //     },
+    //   ),
+    // );
   }
 
   @override
