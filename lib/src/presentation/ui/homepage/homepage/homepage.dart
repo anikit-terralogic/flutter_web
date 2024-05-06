@@ -3,13 +3,14 @@ import 'package:flutter/scheduler.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sample_flutter_web/src/presentation/theme/color_theme.dart';
 import 'package:sample_flutter_web/src/presentation/ui/homepage/aboutme.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/contactus.dart';
 import 'package:sample_flutter_web/src/presentation/ui/homepage/milestones.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/projects.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/services.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/testiminonial/testimonial.dart';
 
-import '../../widget/app_widgets.dart';
-import 'contactus.dart';
-import 'projects.dart';
-import 'services.dart';
-import 'testimonial.dart';
+import '../../../widget/app_widgets.dart';
+
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});

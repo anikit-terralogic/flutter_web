@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sample_flutter_web/src/presentation/theme/color_theme.dart';
 
-import '../../widget/app_widgets.dart';
-
 class SkillItem extends StatelessWidget {
   final String skillName;
   final double progress;

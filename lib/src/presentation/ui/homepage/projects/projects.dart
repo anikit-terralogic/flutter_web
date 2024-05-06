@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-import '../../theme/color_theme.dart';
+import '../../../theme/color_theme.dart';
+
 
 class Projects extends StatefulWidget {
   const Projects({super.key});
