@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sample_flutter_web/src/presentation/theme/color_theme.dart';
 
+import '../../widget/app_widgets.dart';
+
 class SkillItem extends StatelessWidget {
   final String skillName;
   final double progress;
@@ -64,6 +66,8 @@ class _AboutMeSectionState extends State<AboutMeSection> {
   double _progress = 60.0;
 
   int currentIndex = 0;
+
+  int mobileCurrentIndex = 0;
 
   aboutMeForDesktop() {
     return Container(
@@ -198,7 +202,9 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                                     borderRadius: BorderRadius.circular(50),
                                     border: Border.all(
                                         width: 1.0,
-                                        color: ThemeColorName.nameColor)),
+                                        color: currentIndex == index
+                                            ? ThemeColorName.nameColor
+                                            : ThemeColorName.whiteColors)),
                                 child: Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(30, 13, 30, 13),
@@ -209,7 +215,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                                         .textTheme
                                         .titleMedium
                                         ?.copyWith(
-                                            color: currentIndex == index
+                                            color: currentIndex != index
                                                 ? ThemeColorName.whiteColors
                                                 : ThemeColorName.nameColor,
                                             fontSize: 20,
@@ -245,142 +251,179 @@ class _AboutMeSectionState extends State<AboutMeSection> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(right: 30),
-            decoration: BoxDecoration(
-                border:
-                    Border.all(width: 1, color: ThemeColorName.borderColor)),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(300),
-              child: Image.asset(
-                fit: BoxFit.contain,
-                "assets/images/background.jpg",
-                width: 350,
-                height: 347,
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(right: 30),
+              decoration: BoxDecoration(
+                  border:
+                      Border.all(width: 1, color: ThemeColorName.borderColor)),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(300),
+                child: Image.asset(
+                  fit: BoxFit.contain,
+                  "assets/images/background.jpg",
+                  width: 350,
+                  height: 347,
+                ),
               ),
             ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(bottom: 10.0, top: 30),
-            child: Text("About Me",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith()),
-          ),
-          RichText(
-            maxLines: 2,
-            textAlign: TextAlign.center,
-            text: TextSpan(
-              children: <TextSpan>[
-                TextSpan(
-                    text: '20 Year’s Experience on ',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith()),
-                TextSpan(
-                    text: 'Product Design\n',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith()),
-              ],
+            Container(
+              margin: const EdgeInsets.only(bottom: 10.0, top: 30),
+              child: Text("About Me",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: ThemeColorName.nameColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600)),
             ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 25.0, bottom: 50),
-            child: RichText(
-              maxLines: 4,
+            RichText(
+              maxLines: 2,
               textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
               text: TextSpan(
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: ThemeColorName.headline,
-                ),
-                children: const <TextSpan>[
+                children: <TextSpan>[
                   TextSpan(
-                    text: 'Hello there! I\'m ',
-                  ),
+                      text: '20 Year’s Experience on ',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: ThemeColorName.nameColor,
+                          fontSize: 40,
+                          fontWeight: FontWeight.w700)),
                   TextSpan(
-                    text: 'Robert Junior.',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  TextSpan(
-                    text:
-                        ' I specialize in web design and development, and I\'m deeply passionate and committed to my craft. With ',
-                  ),
-                  TextSpan(
-                    text: '20 years',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  TextSpan(
-                    text:
-                        ' of experience as a professional graphic designer...',
-                  ),
+                      text: 'Product Design\n',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: ThemeColorName.headline,
+                          fontSize: 40,
+                          fontWeight: FontWeight.w700)),
                 ],
               ),
             ),
-          ),
-
-          /// tabbar and tabbarview
-          TabBar(
-              indicator: BoxDecoration(
-                color: ThemeColorName.nameColor, // Color of the indicator
-                borderRadius: BorderRadius.circular(50), // Rounded corners
+            Container(
+              margin: const EdgeInsets.only(top: 15.0, bottom: 15),
+              child: RichText(
+                maxLines: 5,
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                text: TextSpan(
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      color: ThemeColorName.headline,
+                      fontWeight: FontWeight.w400),
+                  children: const <TextSpan>[
+                    TextSpan(
+                      text: 'Hello there! I\'m ',
+                    ),
+                    TextSpan(
+                      text: 'Robert Junior.',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    TextSpan(
+                      text:
+                          ' I specialize in web design and development, and I\'m deeply passionate and committed to my craft. With ',
+                    ),
+                    TextSpan(
+                      text: '20 years',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    TextSpan(
+                      text:
+                          ' of experience as a professional graphic designer...',
+                    ),
+                  ],
+                ),
               ),
-              isScrollable: true,
-              labelStyle: Theme.of(context).textTheme.displayMedium?.copyWith(),
-              unselectedLabelStyle:
-                  Theme.of(context).textTheme.bodySmall?.copyWith(),
-              labelColor: ThemeColorName.whiteColors,
-              unselectedLabelColor: ThemeColorName.nameColor,
-              indicatorSize: TabBarIndicatorSize.tab,
-              onTap: (index) {
-                setState(() {
-                  currentIndex = index;
-                });
-              },
-              tabs: List.generate(
-                  tabs.length,
-                  (index) => Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            border: Border.all(
-                                width: 1.0, color: ThemeColorName.nameColor)),
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(30, 13, 30, 13),
-                          child: Text(
-                            tabs[index],
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ))),
-          SizedBox(
-              height: 364,
-              child: TabBarView(
-                  children: List.generate(
-                      tabs.length,
-                      (index) => ListView.builder(
-                          itemCount: skills.length,
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return SkillItem(
-                              skillName: skills[index]['name'],
-                              progress: skills[index]['progress'],
-                            );
-                          })))),
-        ],
-      ),
+            ),
+            Column(children: [
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      color: ThemeColorName.nameColor,
+                      borderRadius: BorderRadius.circular(50),
+                      border: Border.all(color: ThemeColorName.nameColor)),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(36.0, 13.0, 36.0, 13.0),
+                    child: Text(
+                      tabs[0],
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: ThemeColorName.whiteColors,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+              ),
+              // 2
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      color: ThemeColorName.whiteColors,
+                      borderRadius: BorderRadius.circular(50),
+                      border: Border.all(color: ThemeColorName.nameColor)),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(36.0, 13.0, 36.0, 13.0),
+                    child: Text(
+                      tabs[1],
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: ThemeColorName.nameColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      color: ThemeColorName.whiteColors,
+                      borderRadius: BorderRadius.circular(50),
+                      border: Border.all(color: ThemeColorName.nameColor)),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(36.0, 13.0, 36.0, 13.0),
+                    child: Text(
+                      tabs[2],
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: ThemeColorName.nameColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+              ),
+            ]),
+            ListView(
+              shrinkWrap: true,
+              children: List.generate(
+                  skills.length,
+                  (index) => SkillItem(
+                        skillName: skills[index]['name'],
+                        progress: skills[index]['progress'],
+                      )),
+            )
+          ]),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: tabs.length,
+        length: 3,
         child: getValueForScreenType<Widget>(
           context: context,
           mobile: aboutMeForMobile(),

@@ -164,7 +164,7 @@ milestonesForMobile(BuildContext context) {
                         fontSize: 40,
                         fontWeight: FontWeight.w700))),
             Container(
-              margin: const EdgeInsets.only(left: 81, right: 81, bottom: 60),
+              margin: const EdgeInsets.only(left: 46, right: 46, bottom: 60),
               child: ListView.separated(
                 itemCount: mileStoned.length,
                 scrollDirection: Axis.vertical,

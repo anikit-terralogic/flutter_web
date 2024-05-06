@@ -57,7 +57,7 @@ class _PortfolioHomepageState extends State<Homepage> {
           margin: const EdgeInsets.only(bottom: 10.0, top: 15.0),
           child: Text(
             "Welcome to my Portfolio",
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 color: ThemeColorName.headline,
                 fontSize: 20,
                 fontWeight: FontWeight.w600),
@@ -73,14 +73,14 @@ class _PortfolioHomepageState extends State<Homepage> {
             children: <TextSpan>[
               TextSpan(
                   text: 'Hi I’m \n',
-                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: ThemeColorName.headline,
                         fontWeight: FontWeight.w700,
                         fontSize: 50.0,
                       )),
               TextSpan(
                   text: 'Robert Junior\n',
-                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: ThemeColorName.nameColor,
                         fontWeight: FontWeight.w700,
                         fontSize: 50.0,
@@ -89,7 +89,7 @@ class _PortfolioHomepageState extends State<Homepage> {
               // Product Designer
               TextSpan(
                   text: 'Product Designer',
-                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: ThemeColorName.headline,
                         fontWeight: FontWeight.w700,
                         fontSize: 50.0,
@@ -102,7 +102,7 @@ class _PortfolioHomepageState extends State<Homepage> {
           margin: const EdgeInsets.only(top: 10.0),
           child: Text(
             "Collaborating with highly skilled individuals, our agency delivers top-quality services.",
-            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   color: ThemeColorName.headline,
                   fontWeight: FontWeight.w400,
                   fontSize: 20.0,
@@ -142,11 +142,12 @@ class _PortfolioHomepageState extends State<Homepage> {
 
   portfolioDeskTop() {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 83, vertical: 83),
+      margin: const EdgeInsets.only(top: 83, left: 81, right: 81),
+      // margin: const EdgeInsets.symmetric(horizontal: 83, vertical: 83),
       child: Row(
         children: [
           Container(
-            margin: const EdgeInsets.only(top: 78),
+            margin: const EdgeInsets.only(top: 58),
             constraints: const BoxConstraints(maxWidth: 624),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -156,7 +157,7 @@ class _PortfolioHomepageState extends State<Homepage> {
                   margin: const EdgeInsets.only(bottom: 10.0),
                   child: Text(
                     "Welcome to my Portfolio",
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: ThemeColorName.headline,
                         fontSize: 25,
                         fontWeight: FontWeight.w600),
@@ -165,20 +166,18 @@ class _PortfolioHomepageState extends State<Homepage> {
                 RichText(
                   text: TextSpan(
                     style: const TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                    ),
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700),
                     children: <TextSpan>[
                       TextSpan(
                           text: 'Hi I’m \n',
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium
-                              ?.copyWith(
-                                color: ThemeColorName.headline,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 60.0,
-                              )),
+                          style:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: ThemeColorName.headline,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 60.0,
+                                  )),
                       TextSpan(
                           text: 'Robert Junior\n',
                           style: Theme.of(context)
@@ -193,14 +192,12 @@ class _PortfolioHomepageState extends State<Homepage> {
                       // Product Designer
                       TextSpan(
                           text: 'Product Designer',
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium
-                              ?.copyWith(
-                                color: ThemeColorName.headline,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 60.0,
-                              )),
+                          style:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: ThemeColorName.headline,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 60.0,
+                                  )),
                     ],
                   ),
                 ),

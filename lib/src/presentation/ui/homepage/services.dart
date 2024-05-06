@@ -343,6 +343,7 @@ class _ServicesPageState extends State<ServicesPage> {
 
   servicesSectionsForMobile() {
     return Container(
+      margin: EdgeInsets.only(top: 80),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -394,7 +395,7 @@ class _ServicesPageState extends State<ServicesPage> {
             ),
             child: Text(
                 "We transform your ideas into a distinctive web project that both inspires you and captivates your customers",
-                maxLines: 2,
+                maxLines: 3,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -404,7 +405,7 @@ class _ServicesPageState extends State<ServicesPage> {
           ),
           Container(
             margin: const EdgeInsets.only(
-                top: 30.0, left: 81, right: 30, bottom: 20),
+                top: 20.0, left: 11, right: 11, bottom: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -508,19 +509,34 @@ class _ServicesPageState extends State<ServicesPage> {
                                               fontSize: 18.0),
                                     ),
                                   ),
-                                  Text(
-                                    "Learn More ",
-                                    maxLines: 1,
-                                    textAlign: TextAlign.left,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleMedium
-                                        ?.copyWith(
-                                            color: currentIndex != i
-                                                ? ThemeColorName.nameColor
-                                                : ThemeColorName.whiteColors,
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 18.0),
+                                  Row(
+                                    children: [
+                                      Container(
+                                        margin:
+                                            const EdgeInsets.only(right: 10.0),
+                                        child: Text("Learn More ",
+                                            maxLines: 1,
+                                            textAlign: TextAlign.left,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleMedium
+                                                ?.copyWith(
+                                                    color: currentIndex != i
+                                                        ? ThemeColorName
+                                                            .nameColor
+                                                        : ThemeColorName
+                                                            .whiteColors,
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.w400)),
+                                      ),
+                                      Image.asset(
+                                        "assets/images/arrow.png",
+                                        color: currentIndex != i
+                                            ? ThemeColorName.nameColor
+                                            : ThemeColorName.whiteColors,
+                                      )
+                                    ],
                                   ),
                                 ],
                               ),

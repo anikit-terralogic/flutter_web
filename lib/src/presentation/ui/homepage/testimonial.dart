@@ -238,10 +238,10 @@ class _TestimonialPageState extends State<TestimonialPage> {
         children: [
           Text("TESTIMONIALS",
               textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(color: ThemeColorName.nameColor)
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: ThemeColorName.nameColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600)
               //  commonTextStyles(AppColors.nameColor, 20, FontWeight.w600),
               ),
           const SizedBox(
@@ -252,8 +252,9 @@ class _TestimonialPageState extends State<TestimonialPage> {
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: ThemeColorName.headline,
-                  )
+                  color: ThemeColorName.headline,
+                  fontSize: 50,
+                  fontWeight: FontWeight.w700)
               //  commonTextStyles(AppColors.headline, 50, FontWeight.w700)
               ),
           Container(
@@ -333,14 +334,13 @@ class _TestimonialPageState extends State<TestimonialPage> {
                                         servicesPages[i].servicesOffered,
                                         style: Theme.of(context)
                                             .textTheme
-                                            .bodyMedium
+                                            .titleMedium
                                             ?.copyWith(
-                                              color: currentIndex == i
-                                                  ? ThemeColorName.whiteColors
-                                                  : ThemeColorName.headline,
-                                              // 16,
-                                              // FontWeight.w400
-                                            ),
+                                                color: currentIndex == i
+                                                    ? ThemeColorName.whiteColors
+                                                    : ThemeColorName.headline,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w400),
                                         maxLines: 4,
                                         overflow: TextOverflow.ellipsis,
                                       ),
@@ -352,12 +352,12 @@ class _TestimonialPageState extends State<TestimonialPage> {
                                           maxLines: 1,
                                           style: Theme.of(context)
                                               .textTheme
-                                              .bodyMedium
+                                              .titleMedium
                                               ?.copyWith(
-                                                color: ThemeColorName.headline,
-                                                // 16,
-                                                // FontWeight.w600
-                                              ),
+                                                  color:
+                                                      ThemeColorName.headline,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w400),
                                         ),
                                       ),
                                       Container(
@@ -369,14 +369,13 @@ class _TestimonialPageState extends State<TestimonialPage> {
                                               .textTheme
                                               .titleMedium
                                               ?.copyWith(
-                                                color: currentIndex != i
-                                                    ? ThemeColorName
-                                                        .testimonialColor
-                                                    : ThemeColorName
-                                                        .whiteColors,
-                                                // 16,
-                                                // FontWeight.w400
-                                              ),
+                                                  color: currentIndex != i
+                                                      ? ThemeColorName
+                                                          .testimonialColor
+                                                      : ThemeColorName
+                                                          .whiteColors,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w400),
                                         ),
                                       ),
                                     ],

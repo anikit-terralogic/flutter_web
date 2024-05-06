@@ -36,6 +36,8 @@ downloadCvWidget(BuildContext context) {
     child: Padding(
       padding: const EdgeInsets.fromLTRB(36.0, 13.0, 36.0, 13.0),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             "Download CV",

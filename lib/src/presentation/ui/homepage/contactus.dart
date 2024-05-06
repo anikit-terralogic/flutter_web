@@ -56,19 +56,21 @@ class _ContactUsPageState extends State<ContactUsPage> {
             children: [
               // Our Milestones
               Text("CONTACT ME",
-                  maxLines: 2,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: ThemeColorName.greycolor,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w600)),
               Container(
                 margin: const EdgeInsets.only(top: 24, bottom: 60),
                 child: Text("Request Free Consultancy",
                     textAlign: TextAlign.center,
                     maxLines: 2,
-                    style:
-                        Theme.of(context).textTheme.displayLarge?.copyWith()),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: ThemeColorName.whiteColors,
+                        fontSize: 40,
+                        fontWeight: FontWeight.w700)),
               ),
               const MyFormForMobile()
             ]),
@@ -122,7 +124,7 @@ class _MyFormForDesktopState extends State<MyFormForDesktop> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.only(right: 30.0),
+                margin: const EdgeInsets.only(right: 30.0),
                 decoration: BoxDecoration(
                     color: ThemeColorName.whiteColors,
                     borderRadius: BorderRadius.circular(15.0)),
@@ -523,7 +525,8 @@ class _MyFormForDesktopState extends State<MyFormForDesktop> {
           ),
         ),
         Container(
-          margin: const EdgeInsets.only(left: 65, top: 200),
+          margin:
+              const EdgeInsets.only(left: 81, right: 81, top: 200, bottom: 50),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -540,25 +543,27 @@ class _MyFormForDesktopState extends State<MyFormForDesktop> {
                         fontSize: 25,
                         fontWeight: FontWeight.w900),
                   ),
+                  Container(
+                    margin: const EdgeInsets.only(left: 30.0),
+                    child: Text(
+                      " © Copyright 2023. All Rights Reserved.",
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: ThemeColorName.followUsColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
                 ],
               ),
-              Text(
-                " © Copyright 2023. All Rights Reserved.",
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: ThemeColorName.followUsColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400),
-                textAlign: TextAlign.left,
-              ),
-
+              const Spacer(),
               // Tabs
-              Container(
-                margin: EdgeInsets.only(right: 81),
+              Flexible(
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "Follow us :",
+                      "Follow us : ",
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: ThemeColorName.followUsColor,
                           fontSize: 18,
@@ -570,7 +575,10 @@ class _MyFormForDesktopState extends State<MyFormForDesktop> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: imagesLoaded.map((tab) {
-                          return Image.asset(tab);
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 7.5),
+                            child: Image.asset(tab),
+                          );
                         }).toList(),
                       ),
                     ),
@@ -579,7 +587,7 @@ class _MyFormForDesktopState extends State<MyFormForDesktop> {
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
@@ -1040,7 +1048,7 @@ class _MyFormForMobileState extends State<MyFormForMobile> {
                       ],
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 15, bottom: 30),
+                      margin: const EdgeInsets.only(top: 15, bottom: 30),
                       child: Text(
                         " © Copyright 2023. All Rights Reserved.",
                         style: Theme.of(context)
@@ -1056,32 +1064,32 @@ class _MyFormForMobileState extends State<MyFormForMobile> {
 
                     // Tabs
                     Container(
-                      margin: EdgeInsets.only(bottom: 30),
+                      margin: const EdgeInsets.only(bottom: 30),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "Follow us :",
+                            "FOLLOW US: ",
                             textAlign: TextAlign.center,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium
                                 ?.copyWith(
-                                    color: ThemeColorName.followUsColor,
+                                    color: ThemeColorName.whiteColors,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600),
                           ),
-                          Flexible(
-                            flex: 1,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: imagesLoaded.map((tab) {
-                                return Image.asset(tab);
-                              }).toList(),
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: imagesLoaded.map((tab) {
+                              return Padding(
+                                padding: const EdgeInsets.all(7.5),
+                                child: Image.asset(tab),
+                              );
+                            }).toList(),
                           ),
                         ],
                       ),

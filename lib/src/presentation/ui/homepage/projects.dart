@@ -51,7 +51,7 @@ class _ProjectsState extends State<Projects>
                 children: [
                   // Our Milestones
                   Container(
-                    margin: EdgeInsets.only(bottom: 24.0),
+                    margin: const EdgeInsets.only(bottom: 24.0),
                     child: Text(
                       "Our projects",
                       maxLines: 2,
@@ -182,10 +182,10 @@ class _ProjectsState extends State<Projects>
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayMedium
-                          ?.copyWith(color: ThemeColorName.nameColor)),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: ThemeColorName.nameColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600)),
                   Container(
                     margin: const EdgeInsets.only(bottom: 50),
                     width: 684,
@@ -196,86 +196,84 @@ class _ProjectsState extends State<Projects>
                         textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .textTheme
-                            .displayLarge
-                            ?.copyWith(color: ThemeColorName.headline)),
+                            .titleMedium
+                            ?.copyWith(
+                                color: ThemeColorName.headline,
+                                fontSize: 50,
+                                fontWeight: FontWeight.w700)),
                   ),
-                  TabBar(
-                      indicator: BoxDecoration(
-                        color:
-                            ThemeColorName.nameColor, // Color of the indicator
-                        borderRadius:
-                            BorderRadius.circular(50), // Rounded corners
-                      ),
-                      controller: _tabController,
-                      isScrollable: true,
-                      labelStyle: Theme.of(context)
-                          .textTheme
-                          .displayMedium
-                          ?.copyWith(color: ThemeColorName.whiteColors),
-                      unselectedLabelStyle: Theme.of(context)
-                          .textTheme
-                          .displayMedium
-                          ?.copyWith(color: ThemeColorName.nameColor),
-                      labelColor: ThemeColorName.whiteColors,
-                      unselectedLabelColor: ThemeColorName.nameColor,
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      onTap: (index) {
-                        setState(() {
-                          currentIndex = index;
-                        });
-                      },
-                      tabs: List.generate(
-                          tabs.length,
-                          (index) => Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    border: Border.all(
-                                        width: 1.0,
-                                        color: ThemeColorName.nameColor)),
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(30, 13, 30, 13),
-                                  child: Text(
-                                    tabs[index],
-                                    textAlign: TextAlign.center,
-                                  ),
+                  GridView.count(
+                    crossAxisCount: 2,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10.0,
+                    childAspectRatio:
+                        MediaQuery.of(context).size.width / (tabs.length * 30),
+                    children: List.generate(tabs.length, (index) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            currentIndex = index;
+                          });
+                        },
+                        child: Container(
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: index == 0
+                                ? ThemeColorName.nameColor
+                                : ThemeColorName.whiteColors,
+                            borderRadius: BorderRadius.circular(50),
+                            border: Border.all(
+                                width: 1.0,
+                                color: index != 0
+                                    ? ThemeColorName.nameColor
+                                    : ThemeColorName.whiteColors),
+                          ),
+                          child: Center(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                tabs[index],
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: index != 0
+                                      ? ThemeColorName.nameColor
+                                      : ThemeColorName.whiteColors,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                              ))),
-                  SizedBox(
-                      height: 764,
-                      child: TabBarView(
-                          controller: _tabController,
-                          children: List.generate(
-                              tabs.length,
-                              (index) => Container(
-                                    margin: const EdgeInsets.only(
-                                        left: 11, right: 11, top: 30),
-                                    child: SizedBox(
-                                      height: 764,
-                                      child: GridView.builder(
-                                        shrinkWrap: true,
-                                        itemCount: images.length ?? 0,
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        gridDelegate:
-                                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 1,
-                                          crossAxisSpacing: 30,
-                                          mainAxisSpacing: 30.0,
-                                        ),
-                                        itemBuilder: (context, index) {
-                                          return ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(15.0),
-                                            child: Image.asset(
-                                              images[index],
-                                              fit: BoxFit.cover,
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  ))))
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: ((context, index) => SizedBox(
+                            height: 370,
+                            child: Container(
+                              margin:
+                                  const EdgeInsets.only(right: 10, left: 10.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(15.0),
+                                child: Image.asset(
+                                  images[index],
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          )),
+                      separatorBuilder: ((context, index) => const SizedBox(
+                            height: 10.0,
+                          )),
+                      itemCount: images.length)
                 ])));
   }
 
