@@ -18,7 +18,11 @@ class SkillItem extends StatelessWidget {
         children: <Widget>[
           Text(
             skillName,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                height: 1.5,
+                color: ThemeColorName.headline,
+                fontSize: 20,
+                fontWeight: FontWeight.w600),
           ),
           Container(
             margin: const EdgeInsets.only(top: 9.0, bottom: 25),
@@ -58,6 +62,8 @@ class _AboutMeSectionState extends State<AboutMeSection> {
   List<String> tabs = ["Main Skills", "Awards", "Education"];
 
   double _progress = 60.0;
+
+  int currentIndex = 0;
 
   aboutMeForDesktop() {
     return Container(
@@ -181,9 +187,9 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                       unselectedLabelColor: ThemeColorName.nameColor,
                       indicatorSize: TabBarIndicatorSize.tab,
                       onTap: (index) {
-                        // setState(() {
-                        //   currentIndex = index;
-                        // });
+                        setState(() {
+                          currentIndex = index;
+                        });
                       },
                       tabs: List.generate(
                           tabs.length,
@@ -199,6 +205,15 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                                   child: Text(
                                     tabs[index],
                                     textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(
+                                            color: currentIndex == index
+                                                ? ThemeColorName.whiteColors
+                                                : ThemeColorName.nameColor,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600),
                                   ),
                                 ),
                               ))),
@@ -323,9 +338,9 @@ class _AboutMeSectionState extends State<AboutMeSection> {
               unselectedLabelColor: ThemeColorName.nameColor,
               indicatorSize: TabBarIndicatorSize.tab,
               onTap: (index) {
-                // setState(() {
-                //   currentIndex = index;
-                // });
+                setState(() {
+                  currentIndex = index;
+                });
               },
               tabs: List.generate(
                   tabs.length,

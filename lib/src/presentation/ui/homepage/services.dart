@@ -52,6 +52,7 @@ class _ServicesPageState extends State<ServicesPage> {
 
   servicesSectionsForDesktop() {
     return Container(
+      margin: const EdgeInsets.only(top: 200),
       constraints: const BoxConstraints(maxWidth: 652),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -141,7 +142,7 @@ class _ServicesPageState extends State<ServicesPage> {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(left: 81.0, top: 30),
+            margin: const EdgeInsets.only(left: 81.0, top: 30),
             height: 366, // Set a fixed height or use constraints as needed
             child: ListView.separated(
               scrollDirection: Axis.horizontal,

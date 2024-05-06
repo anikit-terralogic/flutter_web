@@ -65,10 +65,10 @@ class _TestimonialPageState extends State<TestimonialPage> {
         children: [
           Text("TESTIMONIALS",
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith()
-
-              /// commonTextStyles(AppColors.nameColor, 20, FontWeight.w600),
-              ),
+              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                  color: ThemeColorName.nameColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600)),
           const SizedBox(
             height: 20,
           ),
@@ -76,16 +76,16 @@ class _TestimonialPageState extends State<TestimonialPage> {
               maxLines: 1,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(color: ThemeColorName.headline)
-              // commonTextStyles(AppColors.headline, 50, FontWeight.w700)
-              ),
+              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                  color: ThemeColorName.headline,
+                  fontSize: 50,
+                  fontWeight: FontWeight.w700)),
           Container(
-            margin: const EdgeInsets.only(top: 50.0, left: 81, right: 50),
+            margin: const EdgeInsets.only(
+                top: 50.0, left: 81, right: 50, bottom: 50),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
                     onTap: () {
@@ -101,7 +101,7 @@ class _TestimonialPageState extends State<TestimonialPage> {
                 GestureDetector(
                     onTap: () {
                       currentIndex < servicesPages.length
-                          ? setState(() => currentIndex == servicesPages.length
+                          ? setState(() => currentIndex >= servicesPages.length
                               ? () {}
                               : currentIndex++)
                           : Container();
@@ -129,7 +129,7 @@ class _TestimonialPageState extends State<TestimonialPage> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Card(
-                                color: currentIndex == i
+                                color: currentIndex != i
                                     ? ThemeColorName.whiteColors
                                     : ThemeColorName.nameColor,
                                 // currentIndex != i
@@ -162,17 +162,14 @@ class _TestimonialPageState extends State<TestimonialPage> {
                                         servicesPages[i].servicesOffered,
                                         style: Theme.of(context)
                                             .textTheme
-                                            .bodyMedium
+                                            .titleMedium
                                             ?.copyWith(
-                                                color: currentIndex == i
-                                                    ? ThemeColorName.whiteColors
-                                                    : ThemeColorName.headline),
-                                        // commonTextStyles(
-                                        //     currentIndex == i
-                                        //         ? AppColors.whiteColor
-                                        //         : AppColors.headline,
-                                        //     16,
-                                        //     FontWeight.w400),
+                                                color: currentIndex != i
+                                                    ? ThemeColorName.headline
+                                                    : ThemeColorName
+                                                        .whiteColors,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w400),
                                         maxLines: 4,
                                         overflow: TextOverflow.ellipsis,
                                       ),
@@ -185,10 +182,16 @@ class _TestimonialPageState extends State<TestimonialPage> {
                                             maxLines: 1,
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .bodyMedium
+                                                .titleMedium
                                                 ?.copyWith(
-                                                    color: ThemeColorName
-                                                        .headline)),
+                                                    color: currentIndex != i
+                                                        ? ThemeColorName
+                                                            .headline
+                                                        : ThemeColorName
+                                                            .whiteColors,
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.w600)),
                                       ),
                                       Container(
                                         margin: const EdgeInsets.only(top: 5.0),
@@ -197,14 +200,16 @@ class _TestimonialPageState extends State<TestimonialPage> {
                                             maxLines: 1,
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .bodyMedium
+                                                .titleMedium
                                                 ?.copyWith(
-                                                  color: currentIndex != i
-                                                      ? ThemeColorName
-                                                          .testimonialColor
-                                                      : ThemeColorName
-                                                          .whiteColors,
-                                                )),
+                                                    color: currentIndex == i
+                                                        ? ThemeColorName
+                                                            .whiteColors
+                                                        : ThemeColorName
+                                                            .testimonialColor,
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.w400)),
                                       ),
                                     ],
                                   ),
@@ -246,10 +251,9 @@ class _TestimonialPageState extends State<TestimonialPage> {
               maxLines: 2,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(color: ThemeColorName.headline)
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: ThemeColorName.headline,
+                  )
               //  commonTextStyles(AppColors.headline, 50, FontWeight.w700)
               ),
           Container(
@@ -363,7 +367,7 @@ class _TestimonialPageState extends State<TestimonialPage> {
                                           maxLines: 1,
                                           style: Theme.of(context)
                                               .textTheme
-                                              .bodyMedium
+                                              .titleMedium
                                               ?.copyWith(
                                                 color: currentIndex != i
                                                     ? ThemeColorName

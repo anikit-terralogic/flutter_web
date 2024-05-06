@@ -41,7 +41,7 @@ class _ProjectsState extends State<Projects>
 
   projectForDesktop() {
     return Container(
-        margin: const EdgeInsets.only(top: 100),
+        //  margin: const EdgeInsets.only(top: 100),
         decoration: BoxDecoration(color: ThemeColorName.whiteColors),
         child: Padding(
             padding: const EdgeInsets.only(top: 100.0),
@@ -50,15 +50,18 @@ class _ProjectsState extends State<Projects>
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // Our Milestones
-                  Text(
-                    "Our projects",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: ThemeColorName.nameColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 24.0),
+                    child: Text(
+                      "Our projects",
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: ThemeColorName.nameColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600),
+                    ),
                   ),
                   Container(
                     margin: const EdgeInsets.only(bottom: 50),
@@ -85,12 +88,18 @@ class _ProjectsState extends State<Projects>
                       isScrollable: true,
                       labelStyle: Theme.of(context)
                           .textTheme
-                          .displayMedium
-                          ?.copyWith(color: ThemeColorName.whiteColors),
+                          .titleMedium
+                          ?.copyWith(
+                              color: ThemeColorName.whiteColors,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w600),
                       unselectedLabelStyle: Theme.of(context)
                           .textTheme
-                          .displayMedium
-                          ?.copyWith(color: ThemeColorName.nameColor),
+                          .titleMedium
+                          ?.copyWith(
+                              color: ThemeColorName.nameColor,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w600),
                       labelColor: ThemeColorName.whiteColors,
                       unselectedLabelColor: ThemeColorName.nameColor,
                       indicatorSize: TabBarIndicatorSize.tab,

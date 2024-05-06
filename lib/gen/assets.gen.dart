@@ -14,6 +14,9 @@ import 'package:flutter/services.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/aboutme_image.png
+  AssetGenImage get aboutmeImage => const AssetGenImage('assets/images/aboutme_image.png');
+
   /// File path: assets/images/arrow.png
   AssetGenImage get arrow => const AssetGenImage('assets/images/arrow.png');
 
@@ -130,6 +133,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
+        aboutmeImage,
         arrow,
         arrowJpg,
         background,
