@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-import 'src/presentation/ui/homepage/homepage.dart';
+import 'src/presentation/ui/homepage/homepage/homepage.dart';
 
 class ResponsiveBuilderHomepage extends StatefulWidget {
   const ResponsiveBuilderHomepage({super.key});

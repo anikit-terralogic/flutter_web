@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:sample_flutter_web/src/presentation/ui/homepage/homepage.dart';
 import 'package:shared/shared.dart';
 
 import 'package:sample_flutter_web/src/presentation/app/bloc/app_bloc.dart';

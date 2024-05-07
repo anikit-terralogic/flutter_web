@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:sample_flutter_web/src/presentation/base/bloc_page/base_page_state.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/projects/bloc/projects_bloc.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/projects/bloc/projects_state.dart';
 
 import '../../../theme/color_theme.dart';
-
 
 class Projects extends StatefulWidget {
   const Projects({super.key});
@@ -11,7 +13,7 @@ class Projects extends StatefulWidget {
   State<Projects> createState() => _ProjectsState();
 }
 
-class _ProjectsState extends State<Projects>
+class _ProjectsState extends BasePageState<Projects, ProjectsBloc>
     with SingleTickerProviderStateMixin {
   var images = [
     "assets/images/one.png",
@@ -279,7 +281,7 @@ class _ProjectsState extends State<Projects>
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildPage(BuildContext context) {
     return getValueForScreenType<Widget>(
       context: context,
       mobile: projectForMobile(),

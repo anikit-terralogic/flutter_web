@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sample_flutter_web/src/presentation/theme/color_theme.dart';
-import 'package:sample_flutter_web/src/presentation/ui/homepage/aboutme.dart';
-import 'package:sample_flutter_web/src/presentation/ui/homepage/contactus.dart';
-import 'package:sample_flutter_web/src/presentation/ui/homepage/milestones.dart';
-import 'package:sample_flutter_web/src/presentation/ui/homepage/projects.dart';
-import 'package:sample_flutter_web/src/presentation/ui/homepage/services.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/homepage/bloc/homepage_bloc.dart';
 import 'package:sample_flutter_web/src/presentation/ui/homepage/testiminonial/testimonial.dart';
 
+import '../../../base/bloc_page/base_page_state.dart';
 import '../../../widget/app_widgets.dart';
-
+import '../aboutme/aboutme.dart';
+import '../contactus/contactus.dart';
+import '../milestones/milestones.dart';
+import '../projects/projects.dart';
+import '../services/services.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
   @override
-  State<Homepage> createState() => _PortfolioHomepageState();
+  State<Homepage> createState() => _HomepageState();
 }
 
-class _PortfolioHomepageState extends State<Homepage> {
+class _HomepageState extends BasePageState<Homepage, HomePageBloc> {
   bool showHomeContent = false;
 
   List<String> tabs = ["Home", "About Me", "Services", "Blog", "Contact Us"];
@@ -335,7 +335,6 @@ class _PortfolioHomepageState extends State<Homepage> {
     return Container(
       margin: const EdgeInsets.only(left: 65, top: 20),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Logo and AeroVision text
           Row(
@@ -352,24 +351,40 @@ class _PortfolioHomepageState extends State<Homepage> {
           ),
 
           // Tabs
-          Flexible(
-            flex: 1,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: tabs.map((tab) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                  child: Text(tab,
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: ThemeColorName.headline,
-                          )),
-                );
-              }).toList(),
-            ),
-          ),
+          const Spacer(),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: List.generate(
+                  tabs.length,
+                  (index) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Text(tabs[index],
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: ThemeColorName.headline,
+                                )),
+                      ))),
+          // Row(
+          //   children: tabs.map((tab) {
+          //     return Flexible(
+          //       flex: 1,
+          //       child: Padding(
+          //         padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          //         child: Text(tab,
+          //             style: Theme.of(context).textTheme.titleSmall!.copyWith(
+          //                   fontSize: 18,
+          //                   fontWeight: FontWeight.w600,
+          //                   color: ThemeColorName.headline,
+          //                 )),
+          //       ),
+          //     );
+          //   }).toList(),
+          // ),
 
           // Let's chat button
           Container(
@@ -387,7 +402,7 @@ class _PortfolioHomepageState extends State<Homepage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildPage(BuildContext context) {
     return Scaffold(
       body: ListView(
         shrinkWrap: true,

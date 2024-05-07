@@ -10,8 +10,6 @@ import 'package:shared/shared.dart';
 import '../../../../main.dart';
 import '../../../../route/app_router.dart';
 import '../../app/bloc/app_bloc.dart';
-import '../../theme/theme_manager.dart';
-import '../../ui/homepage/homepage.dart';
 import '../../widget/dialogue/gobal_dialog.dart';
 import '../../widget/dialogue/loading_dialog.dart';
 import '../../widget/error_states/no_internet.dart';

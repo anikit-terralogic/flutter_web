@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/services/bloc/services_bloc.dart';
 
+import '../../../base/bloc_page/base_page_state.dart';
 import '../../../theme/color_theme.dart';
 
 
@@ -18,7 +20,7 @@ class ServicesPage extends StatefulWidget {
   State<ServicesPage> createState() => _ServicesPageState();
 }
 
-class _ServicesPageState extends State<ServicesPage> {
+class _ServicesPageState extends BasePageState<ServicesPage, ServicesPageBloc> {
   int currentIndex = 0;
 
   List<ServicesPageModel> servicesPages = [
@@ -557,7 +559,7 @@ class _ServicesPageState extends State<ServicesPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildPage(BuildContext context) {
     return getValueForScreenType<Widget>(
       context: context,
       mobile: servicesSectionsForMobile(),

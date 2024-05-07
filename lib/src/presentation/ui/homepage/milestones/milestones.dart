@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sample_flutter_web/src/presentation/theme/color_theme.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/milestones/bloc/milestones_bloc.dart';
+
+import '../../../base/bloc_page/base_page_state.dart';
 
 class MilestoneModel {
   String milestonedachieved;
@@ -220,11 +223,16 @@ milestonesForMobile(BuildContext context) {
   );
 }
 
-class Milestones extends StatelessWidget {
+class Milestones extends StatefulWidget {
   const Milestones({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<Milestones> createState() => _MilestonesState();
+}
+
+class _MilestonesState extends BasePageState<Milestones, MileStonePageBloc> {
+  @override
+  Widget buildPage(BuildContext context) {
     return getValueForScreenType<Widget>(
       context: context,
       mobile: milestonesForMobile(context),

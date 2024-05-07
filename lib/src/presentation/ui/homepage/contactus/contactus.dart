@@ -1,7 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:sample_flutter_web/src/presentation/base/bloc_page/base_page_state.dart';
 import 'package:sample_flutter_web/src/presentation/theme/color_theme.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/contactus/bloc/contactus_bloc.dart';
 
 class ContactUsPage extends StatefulWidget {
   const ContactUsPage({super.key});
@@ -10,7 +12,7 @@ class ContactUsPage extends StatefulWidget {
   State<ContactUsPage> createState() => _ContactUsPageState();
 }
 
-class _ContactUsPageState extends State<ContactUsPage> {
+class _ContactUsPageState extends BasePageState<ContactUsPage,ContactUsPageBloc> {
   contactUsForDesktop() {
     return Container(
       margin: const EdgeInsets.only(top: 100),
@@ -79,7 +81,7 @@ class _ContactUsPageState extends State<ContactUsPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildPage(BuildContext context) {
     return getValueForScreenType<Widget>(
       context: context,
       mobile: contactUsForMobile(),

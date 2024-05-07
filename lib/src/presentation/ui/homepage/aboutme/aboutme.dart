@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:sample_flutter_web/src/presentation/base/bloc_page/base_page_state.dart';
 import 'package:sample_flutter_web/src/presentation/theme/color_theme.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/aboutme/bloc/aboutus_bloc.dart';
 
 class SkillItem extends StatelessWidget {
   final String skillName;
@@ -52,7 +54,7 @@ class AboutMeSection extends StatefulWidget {
   State<AboutMeSection> createState() => _AboutMeSectionState();
 }
 
-class _AboutMeSectionState extends State<AboutMeSection> {
+class _AboutMeSectionState extends BasePageState<AboutMeSection,AboutUsPageBloc> {
   final List<Map<String, dynamic>> skills = [
     {'name': 'User Experience Design - UI/UX', 'progress': 0.9},
     {'name': 'Web & User Interface Design - Development', 'progress': 9.6},
@@ -419,7 +421,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildPage(BuildContext context) {
     return DefaultTabController(
         length: 3,
         child: getValueForScreenType<Widget>(

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sample_flutter_web/src/presentation/theme/color_theme.dart';
+import 'package:sample_flutter_web/src/presentation/ui/homepage/testiminonial/bloc/testimonial_bloc.dart';
+
+import '../../../base/bloc_page/base_page_state.dart';
 
 class TestimonialPageModel {
   String servicesOffered;
@@ -19,7 +22,8 @@ class TestimonialPage extends StatefulWidget {
   State<TestimonialPage> createState() => _TestimonialPageState();
 }
 
-class _TestimonialPageState extends State<TestimonialPage> {
+class _TestimonialPageState
+    extends BasePageState<TestimonialPage, TestimonialPageBloc> {
   int currentIndex = 0;
 
   List<String> testimonialsImages = [
@@ -396,7 +400,7 @@ class _TestimonialPageState extends State<TestimonialPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildPage(BuildContext context) {
     return getValueForScreenType<Widget>(
       context: context,
       mobile: testimonialForMobile(),
