@@ -205,54 +205,57 @@ class _ProjectsState extends BasePageState<Projects, ProjectsBloc>
                                 fontSize: 50,
                                 fontWeight: FontWeight.w700)),
                   ),
-                  GridView.count(
-                    crossAxisCount: 2,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10.0,
-                    childAspectRatio:
-                        MediaQuery.of(context).size.width / (tabs.length * 30),
-                    children: List.generate(tabs.length, (index) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            currentIndex = index;
-                          });
-                        },
-                        child: Container(
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: index == 0
-                                ? ThemeColorName.nameColor
-                                : ThemeColorName.whiteColors,
-                            borderRadius: BorderRadius.circular(50),
-                            border: Border.all(
-                                width: 1.0,
-                                color: index != 0
-                                    ? ThemeColorName.nameColor
-                                    : ThemeColorName.whiteColors),
-                          ),
-                          child: Center(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text(
-                                tabs[index],
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
+                  Container(
+                    margin: EdgeInsets.all(10.0),
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10.0,
+                      childAspectRatio: MediaQuery.of(context).size.width /
+                          (tabs.length * 30),
+                      children: List.generate(tabs.length, (index) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              currentIndex = index;
+                            });
+                          },
+                          child: Container(
+                            height: 30,
+                            decoration: BoxDecoration(
+                              color: index == 0
+                                  ? ThemeColorName.nameColor
+                                  : ThemeColorName.whiteColors,
+                              borderRadius: BorderRadius.circular(50),
+                              border: Border.all(
+                                  width: 1.0,
                                   color: index != 0
                                       ? ThemeColorName.nameColor
-                                      : ThemeColorName.whiteColors,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
+                                      : ThemeColorName.whiteColors),
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Text(
+                                  tabs[index],
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: index != 0
+                                        ? ThemeColorName.nameColor
+                                        : ThemeColorName.whiteColors,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      }),
+                    ),
                   ),
                   const SizedBox(
                     height: 30,

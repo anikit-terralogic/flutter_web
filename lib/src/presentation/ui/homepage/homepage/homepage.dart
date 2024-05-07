@@ -303,132 +303,200 @@ class _HomepageState extends BasePageState<Homepage, HomePageBloc> {
   /// header addded
 
   headerForMobile() {
-    return Container(
-      margin: const EdgeInsets.all(10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return AppBar(
+      primary: true,
+
+      title: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset("assets/images/logo.png"),
-              const SizedBox(
-                  width: 6.0), // Add some spacing between logo and text
-              Text("AeroVision",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(color: ThemeColorName.headline)),
-            ],
+          Container(
+            margin: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset("assets/images/logo.png"),
+                const SizedBox(
+                    width: 6.0), // Add some spacing between logo and text
+                Text("AeroVision",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall
+                        ?.copyWith(color: ThemeColorName.headline)),
+              ],
+            ),
           ),
-          Image.asset(
-            "assets/images/menu.png",
-            width: 32,
-            height: 32,
-          )
         ],
       ),
+      backgroundColor: Colors.transparent, // make app bar transparent
+      elevation: 0, // remove elevation
+      actions: [
+        GestureDetector(
+          onTap: () {
+            // Handle menu button tap
+          },
+          child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Image.asset(
+                "assets/images/menu.png",
+                width: 32,
+                height: 32,
+              )),
+        ),
+      ],
     );
   }
 
   headerForDesktop() {
     return Container(
-      margin: const EdgeInsets.only(left: 65, top: 20),
-      child: Row(
-        children: [
-          // Logo and AeroVision text
-          Row(
-            children: [
-              Image.asset("assets/images/logo.png"),
-              const SizedBox(
-                  width: 6.0), // Add some spacing between logo and text
-              Text("AeroVision",
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      color: ThemeColorName.headline,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w900)),
-            ],
-          ),
+        margin: const EdgeInsets.only(left: 65, top: 20),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Logo and AeroVision text
+            Flexible(
+              flex: 2, // Take 2/7 of available space
+              child: Row(
+                children: [
+                  Image.asset("assets/images/logo.png"),
+                  const SizedBox(width: 6.0),
+                  Text(
+                    "AeroVision",
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                          color: ThemeColorName.headline,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w900,
+                        ),
+                  ),
+                ],
+              ),
+            ),
 
-          // Tabs
-          const Spacer(),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: List.generate(
+            // Tabs
+            Flexible(
+              fit: FlexFit.tight,
+              flex: 3,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
                   tabs.length,
                   (index) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                        child: Text(tabs[index],
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .copyWith(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: ThemeColorName.headline,
-                                )),
-                      ))),
-          // Row(
-          //   children: tabs.map((tab) {
-          //     return Flexible(
-          //       flex: 1,
-          //       child: Padding(
-          //         padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          //         child: Text(tab,
-          //             style: Theme.of(context).textTheme.titleSmall!.copyWith(
-          //                   fontSize: 18,
-          //                   fontWeight: FontWeight.w600,
-          //                   color: ThemeColorName.headline,
-          //                 )),
-          //       ),
-          //     );
-          //   }).toList(),
-          // ),
-
-          // Let's chat button
-          Container(
-            margin: const EdgeInsets.only(left: 130, right: 65.0),
-            child: AppWidgets().buttonWidget(
-              context,
-              ThemeColorName.nameColor,
-              "Let’s chat",
-              ThemeColorName.whiteColors,
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: Text(
+                      tabs[index],
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: ThemeColorName.headline,
+                          ),
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+
+            // Let's chat button
+            Container(
+              margin: const EdgeInsets.only(left: 10, right: 20),
+              child: AppWidgets().buttonWidget(
+                context,
+                ThemeColorName.nameColor,
+                "Let’s chat",
+                ThemeColorName.whiteColors,
+              ),
+            ),
+          ],
+        ));
   }
+
+  /// layout
 
   @override
   Widget buildPage(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        shrinkWrap: true,
-        children: [
-          getValueForScreenType<Widget>(
-            context: context,
-            mobile: headerForMobile(),
-            desktop: headerForDesktop(),
-          ), //// welcome to portfolio
-          getValueForScreenType<Widget>(
-            context: context,
-            mobile: portfolioForMobile(),
-            desktop: portfolioDeskTop(),
-          ),
+      body: ResponsiveBuilder(
+        builder: (context, sizingInformation) {
+          if (sizingInformation.deviceScreenType == DeviceScreenType.mobile) {
+            return mobileLayout();
+          } else {
+            return desktopLayout();
+          }
+        },
+      ),
+      //  ListView(
+      //   shrinkWrap: true,
+      //   children: [
+      //     getValueForScreenType<Widget>(
+      //       context: context,
+      //       mobile: headerForMobile(),
+      //       desktop: headerForDesktop(),
+      //     ), //// welcome to portfolio
+      //     getValueForScreenType<Widget>(
+      //       context: context,
+      //       mobile: portfolioForMobile(),
+      //       desktop: portfolioDeskTop(),
+      //     ),
 
-          /// languages added
-          Container(
+      //     /// languages added
+      //     Container(
+      //         decoration: BoxDecoration(
+      //           color: ThemeColorName.technology,
+      //         ),
+      //         child: getValueForScreenType<Widget>(
+      //           context: context,
+      //           mobile: languaguesMobile(),
+      //           tablet: languagesDesktop(),
+      //           desktop: languagesDesktop(),
+      //         )),
+      //     const AboutMeSection(),
+      //     const ServicesPage(),
+      //     const Milestones(),
+      //     const Projects(),
+      //     const TestimonialPage(),
+      //     const ContactUsPage(),
+      //   ],
+      // ),
+    );
+  }
+
+  Widget mobileLayout() {
+    return Scaffold(
+      appBar: headerForMobile(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            portfolioForMobile(),
+            Container(
               decoration: BoxDecoration(
                 color: ThemeColorName.technology,
               ),
-              child: getValueForScreenType<Widget>(
-                context: context,
-                mobile: languaguesMobile(),
-                tablet: languagesDesktop(),
-                desktop: languagesDesktop(),
-              )),
+              child: languaguesMobile(),
+            ),
+            const AboutMeSection(),
+            const ServicesPage(),
+            const Milestones(),
+            const Projects(),
+            const TestimonialPage(),
+            const ContactUsPage(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget desktopLayout() {
+    return Scaffold(
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          headerForDesktop(),
+          portfolioDeskTop(),
+          Container(
+            decoration: BoxDecoration(
+              color: ThemeColorName.technology,
+            ),
+            child: languagesDesktop(),
+          ),
           const AboutMeSection(),
           const ServicesPage(),
           const Milestones(),
